@@ -29,6 +29,12 @@ import {
 import { cn } from "@/lib/util";
 import * as THREE from 'three';
 
+interface NavigationItem {
+  name: string;
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
 // Enhanced 3D Floating Particles Component with Mobile Optimization
 const FloatingParticles = ({ theme, isMobile }: { theme: string, isMobile: boolean }) => {
   const meshRef = useRef<THREE.InstancedMesh>(null);
@@ -109,6 +115,15 @@ const Logo3D = ({ isHovered, theme }: { isHovered: boolean, theme: string }) => 
 };
 
 // Enhanced Holographic Button Component with Theme and Responsive Support
+interface HolographicButtonProps {
+  children: React.ReactNode;
+  isActive: boolean;
+  onClick?: () => void;
+  icon?: React.ComponentType<{ className?: string }>;
+  theme: string;
+  isMobile?: boolean;
+}
+
 const HolographicButton = ({ 
   children, 
   isActive, 
@@ -116,14 +131,7 @@ const HolographicButton = ({
   icon: Icon,
   theme,
   isMobile = false
-}: { 
-  children: React.ReactNode;
-  isActive: boolean;
-  onClick?: () => void;
-  icon?: any;
-  theme: string;
-  isMobile?: boolean;
-}) => {
+}: HolographicButtonProps) => {
   const [isHovered, setIsHovered] = useState(false);
   
   return (

@@ -13,6 +13,22 @@ import {
 } from 'lucide-react';
 import { cn } from "@/lib/util";
 import * as THREE from 'three';
+interface SocialLink {
+  icon: React.ComponentType<{ className?: string }>;
+  href: string;
+  label: string;
+  color: string;
+}
+
+interface FooterSection {
+  title: string;
+  icon: React.ComponentType<{ className?: string }>;
+  links: Array<{
+    name: string;
+    href: string;
+    icon?: React.ComponentType<{ className?: string }>;
+  }>;
+}
 
 // Enhanced 3D Floating Network Visualization with Theme Support
 const NetworkVisualization = ({ theme }: { theme: string }) => {
@@ -126,13 +142,23 @@ const Social3DIcon = ({
 };
 
 // Enhanced Magnetic Interactive Element with Theme Support
+interface MagneticElementProps {
+  children: React.ReactNode;
+  className?: string;
+  strength?: number;
+  theme?: string;
+  style?: React.CSSProperties;
+  onMouseMove?: (e: React.MouseEvent) => void;
+  onMouseLeave?: () => void;
+}
+
 const MagneticElement = ({ 
   children, 
   className = "",
   strength = 0.3,
   theme = 'dark',
   ...props 
-}: any) => {
+}: MagneticElementProps) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const elementRef = useRef<HTMLDivElement>(null);
   
@@ -173,6 +199,13 @@ const MagneticElement = ({
   );
 };
 
+interface HolographicLinkProps {
+  href: string;
+  children: React.ReactNode;
+  icon?: React.ComponentType<{ className?: string }>;
+  delay?: number;
+  theme?: string;
+}
 // Enhanced Holographic Link Component with Theme Support
 const HolographicLink = ({ 
   href, 
@@ -180,7 +213,7 @@ const HolographicLink = ({
   icon: Icon, 
   delay = 0, 
   theme = 'dark' 
-}: any) => {
+}: HolographicLinkProps) => {
   const [isHovered, setIsHovered] = useState(false);
   
   return (

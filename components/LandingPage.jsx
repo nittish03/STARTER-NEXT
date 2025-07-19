@@ -8,6 +8,7 @@ import { Text, Float, Sphere, Box, Dodecahedron, Torus, OrbitControls, Stars, Cl
 import { useTheme } from 'next-themes';
 import * as THREE from 'three';
 
+
 // 3D Background Components
 const FloatingGeometry = ({ theme }) => {
   const group = useRef();
@@ -60,6 +61,8 @@ const FloatingGeometry = ({ theme }) => {
     </group>
   );
 };
+
+
 
 const ParticleField = ({ theme }) => {
   const points = useRef();
@@ -1626,36 +1629,41 @@ const FinalCTASection = () => {
           </motion.div>
 
           {/* Main Headline */}
-          <motion.h2 
-            className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-8 leading-tight text-white"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            animate={{
-              textShadow: [
-                '0 0 20px rgba(255, 255, 255, 0.5)',
-                '0 0 40px rgba(139, 92, 246, 0.8)',
-                '0 0 60px rgba(236, 72, 153, 0.6)',
-                '0 0 40px rgba(139, 92, 246, 0.8)',
-                '0 0 20px rgba(255, 255, 255, 0.5)'
-              ]
-            }}
-            transition={{ duration: 4, repeat: Infinity }}
-          >
-            Ready to 
-            <motion.span 
-              className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent"
-              animate={{
-                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-              }}
-              transition={{ duration: 3, repeat: Infinity }}
-              style={{ backgroundSize: '200% 200%' }}
-            >
-              Revolutionize
-            </motion.span>
-            <br />
-            Your Business?
-          </motion.h2>
+<motion.h2 
+  className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-8 leading-tight text-white"
+  initial={{ opacity: 0, y: 30 }}
+  animate={isInView ? { 
+    opacity: 1, 
+    y: 0,
+    textShadow: [
+      '0 0 20px rgba(255, 255, 255, 0.5)',
+      '0 0 40px rgba(139, 92, 246, 0.8)',
+      '0 0 60px rgba(236, 72, 153, 0.6)',
+      '0 0 40px rgba(139, 92, 246, 0.8)',
+      '0 0 20px rgba(255, 255, 255, 0.5)'
+    ]
+  } : {}}
+  transition={{ 
+    opacity: { delay: 0.5, duration: 0.8 },
+    y: { delay: 0.5, duration: 0.8 },
+    textShadow: { duration: 4, repeat: Infinity }
+  }}
+>
+  Ready to 
+  <motion.span 
+    className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent"
+    animate={{
+      backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+    }}
+    transition={{ duration: 3, repeat: Infinity }}
+    style={{ backgroundSize: '200% 200%' }}
+  >
+    Revolutionize
+  </motion.span>
+  <br />
+  Your Business?
+</motion.h2>
+
 
           {/* Subheadline */}
           <motion.p 
