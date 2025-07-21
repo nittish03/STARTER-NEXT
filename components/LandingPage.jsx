@@ -8,8 +8,7 @@ import { Text, Float, Sphere, Box, Dodecahedron, Torus, OrbitControls, Stars, Cl
 import { useTheme } from 'next-themes';
 import * as THREE from 'three';
 
-
-// 3D Background Components
+// Enhanced 3D Background Components with Vivid Purple Theme
 const FloatingGeometry = ({ theme }) => {
   const group = useRef();
   
@@ -26,8 +25,8 @@ const FloatingGeometry = ({ theme }) => {
       <Float speed={2} rotationIntensity={1} floatIntensity={2}>
         <Dodecahedron args={[1.5]} position={[-4, 2, -2]}>
           <meshStandardMaterial 
-            color="#8b5cf6" 
-            emissive="#8b5cf6" 
+            color="#D86DFC" 
+            emissive="#D86DFC" 
             emissiveIntensity={theme === 'dark' ? 0.4 : 0.2} 
             transparent
             opacity={theme === 'dark' ? 0.9 : 0.7}
@@ -38,8 +37,8 @@ const FloatingGeometry = ({ theme }) => {
       <Float speed={1.5} rotationIntensity={0.8} floatIntensity={1.5}>
         <Torus args={[1, 0.4, 16, 32]} position={[4, -1, -1]} rotation={[0.5, 0, 0]}>
           <meshStandardMaterial 
-            color="#ec4899" 
-            emissive="#ec4899" 
+            color="#6DE1FC" 
+            emissive="#6DE1FC" 
             emissiveIntensity={theme === 'dark' ? 0.3 : 0.2}
             transparent
             opacity={theme === 'dark' ? 0.8 : 0.6}
@@ -50,8 +49,8 @@ const FloatingGeometry = ({ theme }) => {
       <Float speed={2.5} rotationIntensity={1.2} floatIntensity={1.8}>
         <Box args={[1.2, 1.2, 1.2]} position={[0, 3, -3]}>
           <meshStandardMaterial 
-            color="#06b6d4" 
-            emissive="#06b6d4" 
+            color="#FCD68D" 
+            emissive="#FCD68D" 
             emissiveIntensity={theme === 'dark' ? 0.3 : 0.2}
             transparent
             opacity={theme === 'dark' ? 0.8 : 0.6}
@@ -62,8 +61,7 @@ const FloatingGeometry = ({ theme }) => {
   );
 };
 
-
-
+// Enhanced Particle Field with Vivid Purple Theme
 const ParticleField = ({ theme }) => {
   const points = useRef();
   const particleCount = 1000;
@@ -77,7 +75,12 @@ const ParticleField = ({ theme }) => {
     positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
     
     const color = new THREE.Color();
-    color.setHSL(Math.random() * 0.3 + 0.7, 0.8, theme === 'dark' ? 0.7 : 0.5);
+    // Use vivid purple theme colors
+    const colorIndex = Math.floor(Math.random() * 3);
+    if (colorIndex === 0) color.setHex(0xD86DFC); // Vivid Purple
+    else if (colorIndex === 1) color.setHex(0x6DE1FC); // Cyan Blue
+    else color.setHex(0xFCD68D); // Soft Yellow
+    
     colors[i * 3] = color.r;
     colors[i * 3 + 1] = color.g;
     colors[i * 3 + 2] = color.b;
@@ -125,7 +128,7 @@ const ParticleField = ({ theme }) => {
   );
 };
 
-// Magnetic Button Component
+// Enhanced Magnetic Button Component with Vivid Purple Theme
 const MagneticButton = ({ 
   children, 
   onClick, 
@@ -166,8 +169,8 @@ const MagneticButton = ({
       whileHover={{
         boxShadow: variant === 'primary' 
           ? theme === 'dark'
-            ? '0 25px 50px rgba(139, 92, 246, 0.5), 0 0 40px rgba(236, 72, 153, 0.3)'
-            : '0 25px 50px rgba(139, 92, 246, 0.3), 0 0 40px rgba(236, 72, 153, 0.2)'
+            ? '0 25px 50px rgba(216, 109, 252, 0.5), 0 0 40px rgba(109, 225, 252, 0.3)'
+            : '0 25px 50px rgba(216, 109, 252, 0.3), 0 0 40px rgba(109, 225, 252, 0.2)'
           : theme === 'dark'
             ? '0 20px 40px rgba(255, 255, 255, 0.1)'
             : '0 20px 40px rgba(0, 0, 0, 0.1)',
@@ -184,13 +187,13 @@ const MagneticButton = ({
       transition={{ type: "spring", stiffness: 200, damping: 20 }}
       {...props}
     >
-      {/* Animated Background */}
+      {/* Enhanced Animated Background with Vivid Purple */}
       <motion.div
         className={`absolute inset-0 ${
           variant === 'primary'
-            ? 'bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600'
+            ? 'bg-gradient-to-r from-violet-600 via-fuchsia-600 to-cyan-400'
             : theme === 'dark'
-              ? 'bg-gradient-to-r from-gray-700 to-gray-800'
+              ? 'bg-gradient-to-r from-slate-700 to-slate-800'
               : 'bg-gradient-to-r from-gray-100 to-gray-200'
         }`}
         animate={{
@@ -199,7 +202,7 @@ const MagneticButton = ({
         transition={{ duration: 0.8, ease: "easeInOut" }}
       />
       
-      {/* Holographic Effect */}
+      {/* Enhanced Holographic Effect with Vivid Purple */}
       <motion.div
         className={`absolute inset-0 bg-gradient-to-r from-transparent ${
           theme === 'dark' ? 'via-white/30' : 'via-black/20'
@@ -209,7 +212,7 @@ const MagneticButton = ({
         transition={{ duration: 0.8, ease: "easeInOut" }}
       />
       
-      {/* Glass Effect */}
+      {/* Glass Effect with Vivid Purple Theme */}
       <div className={`absolute inset-0 ${
         theme === 'dark' ? 'bg-white/10' : 'bg-black/5'
       } backdrop-blur-sm border ${
@@ -222,7 +225,7 @@ const MagneticButton = ({
           ? 'text-white' 
           : theme === 'dark' 
             ? 'text-white' 
-            : 'text-gray-900'
+            : 'text-gray-200'
       }`}>
         {Icon && (
           <motion.div
@@ -238,7 +241,7 @@ const MagneticButton = ({
         <span>{children}</span>
       </span>
       
-      {/* Particle Effects */}
+      {/* Enhanced Particle Effects with Vivid Purple */}
       <AnimatePresence>
         {isHovered && (
           <>
@@ -246,7 +249,7 @@ const MagneticButton = ({
               <motion.div
                 key={i}
                 className={`absolute w-1 h-1 ${
-                  theme === 'dark' ? 'bg-white' : 'bg-purple-600'
+                  theme === 'dark' ? 'bg-white' : 'bg-violet-600'
                 } rounded-full`}
                 initial={{ x: '50%', y: '50%', scale: 0 }}
                 animate={{
@@ -268,7 +271,7 @@ const MagneticButton = ({
   );
 };
 
-// Enhanced Feature Card
+// Enhanced Feature Card with Vivid Purple Theme
 const FeatureCard = ({ feature, index, theme }) => {
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef(null);
@@ -314,26 +317,26 @@ const FeatureCard = ({ feature, index, theme }) => {
       <motion.div
         className={`relative p-6 sm:p-8 rounded-3xl backdrop-blur-xl border overflow-hidden cursor-pointer h-full ${
           theme === 'dark' 
-            ? 'bg-gradient-to-br from-gray-800/50 to-gray-900/50 border-white/20' 
+            ? 'bg-gradient-to-br from-slate-800/50 to-slate-900/50 border-white/20' 
             : 'bg-gradient-to-br from-white/80 to-gray-50/80 border-gray-200/50'
         }`}
         whileHover={{
           scale: 1.05,
           z: 50,
           boxShadow: theme === 'dark'
-            ? '0 25px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(139, 92, 246, 0.4)'
-            : '0 25px 50px rgba(0, 0, 0, 0.15), 0 0 30px rgba(139, 92, 246, 0.2)',
+            ? '0 25px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(216, 109, 252, 0.4)'
+            : '0 25px 50px rgba(0, 0, 0, 0.15), 0 0 30px rgba(216, 109, 252, 0.2)',
         }}
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
       >
-        {/* Animated Background */}
+        {/* Enhanced Animated Background with Vivid Purple */}
         <motion.div
           className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0`}
           animate={{ opacity: isHovered ? 0.1 : 0 }}
           transition={{ duration: 0.3 }}
         />
         
-        {/* Icon Container */}
+        {/* Enhanced Icon Container with Vivid Purple */}
         <motion.div
           className={`relative inline-flex p-4 rounded-2xl bg-gradient-to-r ${feature.color} text-white mb-6 overflow-hidden`}
           animate={{
@@ -351,7 +354,7 @@ const FeatureCard = ({ feature, index, theme }) => {
             {feature.icon}
           </div>
           
-          {/* Orbital Ring */}
+          {/* Enhanced Orbital Ring with Vivid Purple */}
           <motion.div
             className="absolute inset-0 border-2 border-white/30 rounded-2xl"
             animate={{ rotate: isHovered ? 360 : 0 }}
@@ -365,25 +368,25 @@ const FeatureCard = ({ feature, index, theme }) => {
           transition={{ duration: 0.3 }}
         >
           <h3 className={`text-xl sm:text-2xl font-bold mb-4 ${
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
+            theme === 'dark' ? 'text-white' : 'text-gray-200'
           }`}>
             {feature.title}
           </h3>
           <p className={`leading-relaxed text-sm sm:text-base ${
-            theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+            theme === 'dark' ? 'text-gray-300' : 'text-gray-200'
           }`}>
             {feature.description}
           </p>
         </motion.div>
         
-        {/* Hover Particles */}
+        {/* Enhanced Hover Particles with Vivid Purple */}
         <AnimatePresence>
           {isHovered && (
             <>
               {[...Array(8)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute w-2 h-2 bg-purple-400 rounded-full"
+                  className="absolute w-2 h-2 bg-violet-400 rounded-full"
                   initial={{ x: '50%', y: '50%', scale: 0 }}
                   animate={{
                     x: `${50 + Math.random() * 100 - 50}%`,
@@ -405,7 +408,7 @@ const FeatureCard = ({ feature, index, theme }) => {
   );
 };
 
-// Main Landing Page Component
+// Main Landing Page Component with Vivid Purple Theme
 const LandingPage = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -425,14 +428,14 @@ const LandingPage = () => {
 
   return (
     <div className="relative">
-      {/* Hero Section */}
+      {/* Enhanced Hero Section with Vivid Purple Theme */}
       <div className={`min-h-screen relative overflow-hidden transition-all duration-500 ${
         theme === 'dark' 
-          ? 'bg-gradient-to-br from-gray-900 via-purple-900/30 to-black' 
-          : 'bg-gradient-to-br from-slate-50 via-purple-100/50 to-white'
+          ? 'bg-gradient-to-br from-slate-900 via-indigo-900/30 to-black' 
+          : 'bg-gradient-to-br from-gray-50 via-violet-100/50 to-white'
       }`}>
         
-        {/* 3D Background Canvas */}
+        {/* Enhanced 3D Background Canvas with Vivid Purple */}
         <motion.div 
           className="absolute inset-0 w-full h-full"
           style={{ y: y1, opacity }}
@@ -441,7 +444,7 @@ const LandingPage = () => {
             <Suspense fallback={null}>
               <ambientLight intensity={theme === 'dark' ? 0.4 : 0.6} />
               <pointLight position={[10, 10, 10]} intensity={0.8} />
-              <pointLight position={[-10, -10, -10]} intensity={0.3} color="#8b5cf6" />
+              <pointLight position={[-10, -10, -10]} intensity={0.3} color="#D86DFC" />
               
               <Stars
                 radius={100}
@@ -467,11 +470,11 @@ const LandingPage = () => {
           </Canvas>
         </motion.div>
 
-        {/* Animated Background Blobs */}
+        {/* Enhanced Animated Background Blobs with Vivid Purple */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div 
             className={`absolute -top-4 -right-4 w-48 sm:w-72 h-48 sm:h-72 rounded-full mix-blend-multiply filter blur-xl opacity-70 ${
-              theme === 'dark' ? 'bg-purple-600' : 'bg-purple-500'
+              theme === 'dark' ? 'bg-violet-600' : 'bg-violet-500'
             }`}
             animate={{
               x: [0, 50, 0],
@@ -502,7 +505,7 @@ const LandingPage = () => {
           />
           <motion.div 
             className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 sm:w-72 h-48 sm:h-72 rounded-full mix-blend-multiply filter blur-xl opacity-70 ${
-              theme === 'dark' ? 'bg-pink-600' : 'bg-pink-500'
+              theme === 'dark' ? 'bg-fuchsia-600' : 'bg-fuchsia-500'
             }`}
             animate={{
               rotate: [0, 360],
@@ -517,17 +520,17 @@ const LandingPage = () => {
           />
         </div>
 
-        {/* Hero Content */}
+        {/* Enhanced Hero Content with Vivid Purple */}
         <section className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto w-full">
             <div className="text-center">
               
-              {/* Social Proof Badge */}
+              {/* Enhanced Social Proof Badge with Vivid Purple */}
               <motion.div 
                 initial={{ opacity: 0, y: 20, rotateX: -90 }}
                 animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20, rotateX: 0 }}
                 transition={{ duration: 0.8, type: "spring", stiffness: 200 }}
-                className={`inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 rounded-full backdrop-blur-lg border mb-6 sm:mb-8 ${
+                className={`inline-flex items-center mt-8 px-4 sm:px-6 py-2 sm:py-3 rounded-full backdrop-blur-lg border mb-6 sm:mb-8 ${
                   theme === 'dark' 
                     ? 'bg-white/10 border-white/20' 
                     : 'bg-white/60 border-gray-300/30'
@@ -549,11 +552,11 @@ const LandingPage = () => {
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  <Sparkles className="w-4 h-4 text-pink-500" />
+                  <Sparkles className="w-4 h-4 text-fuchsia-500" />
                 </motion.div>
               </motion.div>
 
-              {/* Main Headline */}
+              {/* Enhanced Main Headline with Vivid Purple */}
               <motion.div
                 initial={{ opacity: 0, y: 50, rotateX: -30 }}
                 animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 50, rotateX: 0 }}
@@ -561,7 +564,7 @@ const LandingPage = () => {
                 style={{ transformStyle: 'preserve-3d' }}
               >
                 <h1 className={`text-3xl sm:text-5xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-6 sm:mb-8 ${
-                  theme === 'dark' ? 'text-white' : 'text-gray-900'
+                  theme === 'dark' ? 'text-white' : 'text-black'
                 }`}>
                   <motion.span
                     className="inline-block"
@@ -569,15 +572,15 @@ const LandingPage = () => {
                       y: [0, -10, 0],
                       textShadow: theme === 'dark' 
                         ? [
-                          '0 0 20px rgba(255,255,255,0.5)',
-                          '0 0 40px rgba(139,92,246,0.8)',
-                          '0 0 20px rgba(255,255,255,0.5)'
-                        ]
+                            '0 0 20px rgba(255,255,255,0.5)',
+                            '0 0 40px rgba(216,109,252,0.8)',
+                            '0 0 20px rgba(255,255,255,0.5)'
+                          ]
                         : [
-                          '0 0 20px rgba(0,0,0,0.3)',
-                          '0 0 40px rgba(139,92,246,0.6)',
-                          '0 0 20px rgba(0,0,0,0.3)'
-                        ]
+                            '0 0 20px rgba(0,0,0,0.3)',
+                            '0 0 40px rgba(216,109,252,0.6)',
+                            '0 0 20px rgba(0,0,0,0.3)'
+                          ]
                     }}
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                   >
@@ -585,7 +588,7 @@ const LandingPage = () => {
                   </motion.span>
                   <br />
                   <motion.span 
-                    className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent inline-block"
+                    className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent inline-block"
                     animate={{ 
                       backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                       scale: [1, 1.02, 1],
@@ -618,13 +621,13 @@ const LandingPage = () => {
                 </h1>
               </motion.div>
 
-              {/* Subtitle */}
+              {/* Enhanced Subtitle */}
               <motion.p 
                 initial={{ opacity: 0, y: 30, rotateX: -20 }}
                 animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30, rotateX: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className={`text-lg sm:text-xl lg:text-2xl mb-8 sm:mb-12 max-w-5xl mx-auto leading-relaxed px-4 ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                  theme === 'dark' ? 'text-gray-300' : 'text-gray-900'
                 }`}
                 style={{ textShadow: theme === 'dark' ? '0 2px 10px rgba(0, 0, 0, 0.3)' : '0 2px 10px rgba(0, 0, 0, 0.1)' }}
               >
@@ -632,7 +635,7 @@ const LandingPage = () => {
                 Join thousands of companies already accelerating their growth with our revolutionary solution.
               </motion.p>
 
-              {/* CTA Buttons */}
+              {/* Enhanced CTA Buttons with Vivid Purple */}
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
@@ -653,20 +656,20 @@ const LandingPage = () => {
                   className={`w-full sm:w-auto border-2 ${
                     theme === 'dark' 
                       ? 'border-white/30 text-white bg-white/10 hover:bg-white/20' 
-                      : 'border-gray-300/30 text-gray-900 bg-gray-100/50 hover:bg-gray-200/50'
+                      : 'border-gray-300/30 text-gray-900 bg-gray-200 hover:bg-gray-200'
                   }`}
                 >
                   Watch Demo
                 </MagneticButton>
               </motion.div>
 
-              {/* Trust Indicators */}
+              {/* Enhanced Trust Indicators with Vivid Purple */}
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
                 transition={{ duration: 0.8, delay: 1 }}
                 className={`flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 px-4 ${
-                  theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+                  theme === 'dark' ? 'text-gray-200' : 'text-slate-800'
                 }`}
               >
                 {[
@@ -713,7 +716,7 @@ const LandingPage = () => {
   );
 };
 
-// Enhanced Features Section
+// Enhanced Features Section with Vivid Purple Theme
 const FeaturesSection = () => {
   const { theme } = useTheme();
   const sectionRef = useRef(null);
@@ -730,31 +733,31 @@ const FeaturesSection = () => {
       icon: <Shield className="w-8 h-8 sm:w-10 sm:h-10" />,
       title: "Military-Grade Security",
       description: "SOC 2 Type II compliant with quantum encryption, zero-trust architecture, and real-time threat detection",
-      color: "from-blue-400 via-cyan-500 to-teal-500"
+      color: "from-cyan-400 via-blue-500 to-indigo-500"
     },
     {
       icon: <Users className="w-8 h-8 sm:w-10 sm:h-10" />,
       title: "Seamless Collaboration",
       description: "AI-powered team sync with real-time collaboration, smart notifications, and intuitive workflow automation",
-      color: "from-purple-400 via-pink-500 to-rose-500"
+      color: "from-violet-400 via-fuchsia-500 to-pink-500"
     },
     {
       icon: <Database className="w-8 h-8 sm:w-10 sm:h-10" />,
       title: "Intelligent Analytics",
       description: "Advanced AI-driven insights with predictive modeling, real-time dashboards, and automated reporting",
-      color: "from-green-400 via-emerald-500 to-teal-500"
+      color: "from-emerald-400 via-teal-500 to-cyan-500"
     },
     {
       icon: <Globe className="w-8 h-8 sm:w-10 sm:h-10" />,
       title: "Global Scalability",
       description: "Deploy across 50+ regions with auto-scaling infrastructure and 99.99% uptime guarantee",
-      color: "from-indigo-400 via-purple-500 to-pink-500"
+      color: "from-indigo-400 via-violet-500 to-fuchsia-500"
     },
     {
       icon: <Code className="w-8 h-8 sm:w-10 sm:h-10" />,
       title: "Developer-First API",
       description: "RESTful APIs with GraphQL support, comprehensive SDKs, and extensive documentation for rapid integration",
-      color: "from-rose-400 via-pink-500 to-purple-500"
+      color: "from-rose-400 via-fuchsia-500 to-violet-500"
     }
   ];
 
@@ -763,12 +766,12 @@ const FeaturesSection = () => {
       ref={sectionRef}
       className={`py-16 sm:py-24 lg:py-32 relative overflow-hidden transition-colors duration-500 ${
         theme === 'dark' 
-          ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-black' 
+          ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-black' 
           : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'
       }`}
     >
       
-      {/* 3D Background Elements */}
+      {/* Enhanced 3D Background Elements with Vivid Purple */}
       <div className="absolute inset-0 opacity-20">
         <Canvas>
           <Suspense fallback={null}>
@@ -777,13 +780,13 @@ const FeaturesSection = () => {
             
             <Float speed={1} rotationIntensity={0.5} floatIntensity={1}>
               <Ring args={[3, 3.5, 32]} position={[-10, 4, -8]} rotation={[0.5, 0, 0]}>
-                <meshStandardMaterial color="#8b5cf6" transparent opacity={0.3} />
+                <meshStandardMaterial color="#D86DFC" transparent opacity={0.3} />
               </Ring>
             </Float>
             
             <Float speed={1.5} rotationIntensity={0.3} floatIntensity={0.8}>
               <Cylinder args={[1, 1.5, 2]} position={[10, -2, -5]}>
-                <meshStandardMaterial color="#ec4899" transparent opacity={0.2} />
+                <meshStandardMaterial color="#6DE1FC" transparent opacity={0.2} />
               </Cylinder>
             </Float>
           </Suspense>
@@ -792,7 +795,7 @@ const FeaturesSection = () => {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
+        {/* Enhanced Section Header with Vivid Purple */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -802,16 +805,16 @@ const FeaturesSection = () => {
           <motion.div
             className={`inline-flex items-center space-x-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full border mb-4 sm:mb-6 ${
               theme === 'dark'
-                ? 'bg-purple-900/30 border-purple-700/50'
-                : 'bg-purple-100 border-purple-200'
+                ? 'bg-violet-900/30 border-violet-700/50'
+                : 'bg-violet-100 border-violet-200'
             }`}
             whileHover={{ scale: 1.05 }}
           >
             <Crown className={`w-4 h-4 sm:w-5 sm:h-5 ${
-              theme === 'dark' ? 'text-purple-400' : 'text-purple-600'
+              theme === 'dark' ? 'text-violet-400' : 'text-violet-600'
             }`} />
             <span className={`text-xs sm:text-sm font-semibold ${
-              theme === 'dark' ? 'text-purple-300' : 'text-purple-800'
+              theme === 'dark' ? 'text-violet-300' : 'text-violet-800'
             }`}>
               Premium Features
             </span>
@@ -819,7 +822,7 @@ const FeaturesSection = () => {
           
           <motion.h2 
             className={`text-3xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 transition-colors ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
+              theme === 'dark' ? 'text-white' : 'text-black'
             }`}
             animate={{
               backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
@@ -827,12 +830,12 @@ const FeaturesSection = () => {
             transition={{ duration: 5, repeat: Infinity }}
           >
             Everything You Need to 
-            <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent"> Dominate</span>
+            <span className="bg-gradient-to-r from-violet-600 via-fuchsia-600 to-cyan-600 bg-clip-text text-transparent"> Dominate</span>
           </motion.h2>
           
           <motion.p 
             className={`text-lg sm:text-xl max-w-4xl mx-auto transition-colors ${
-              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+              theme === 'dark' ? 'text-gray-200' : 'text-slate-800'
             }`}
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
@@ -842,7 +845,7 @@ const FeaturesSection = () => {
           </motion.p>
         </motion.div>
 
-        {/* Feature Cards Grid */}
+        {/* Enhanced Feature Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
           {features.map((feature, index) => (
             <FeatureCard key={index} feature={feature} index={index} theme={theme} />
@@ -853,7 +856,7 @@ const FeaturesSection = () => {
   );
 };
 
-// Enhanced Social Proof Section
+// Enhanced Social Proof Section with Vivid Purple Theme
 const SocialProofSection = () => {
   const { theme } = useTheme();
   const sectionRef = useRef(null);
@@ -891,12 +894,12 @@ const SocialProofSection = () => {
       ref={sectionRef}
       className={`py-16 sm:py-24 lg:py-32 relative overflow-hidden transition-colors duration-500 ${
         theme === 'dark' 
-          ? 'bg-gradient-to-br from-gray-900 via-purple-900/20 to-black' 
-          : 'bg-gradient-to-br from-gray-100 via-purple-50/30 to-white'
+          ? 'bg-gradient-to-br from-slate-900 via-indigo-900/20 to-black' 
+          : 'bg-gradient-to-br from-gray-100 via-violet-50/30 to-white'
       }`}
     >
       
-      {/* 3D Background */}
+      {/* Enhanced 3D Background with Vivid Purple */}
       <div className="absolute inset-0 opacity-20">
         <Canvas>
           <Suspense fallback={null}>
@@ -919,10 +922,10 @@ const SocialProofSection = () => {
                   ]}
                 >
                   <meshStandardMaterial 
-                    color={i % 2 === 0 ? "#8b5cf6" : "#ec4899"} 
+                    color={i % 3 === 0 ? "#D86DFC" : i % 3 === 1 ? "#6DE1FC" : "#FCD68D"} 
                     transparent 
                     opacity={0.3}
-                    emissive={i % 2 === 0 ? "#8b5cf6" : "#ec4899"}
+                    emissive={i % 3 === 0 ? "#D86DFC" : i % 3 === 1 ? "#6DE1FC" : "#FCD68D"}
                     emissiveIntensity={0.2}
                   />
                 </Sphere>
@@ -934,7 +937,7 @@ const SocialProofSection = () => {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
+        {/* Enhanced Section Header with Vivid Purple */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -943,20 +946,20 @@ const SocialProofSection = () => {
         >
           <motion.h2 
             className={`text-3xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
+              theme === 'dark' ? 'text-white' : 'text-black'
             }`}
             animate={{
               textShadow: theme === 'dark' 
                 ? [
-                  '0 0 20px rgba(139, 92, 246, 0.5)',
-                  '0 0 40px rgba(236, 72, 153, 0.5)',
-                  '0 0 20px rgba(139, 92, 246, 0.5)'
-                ]
+                    '0 0 20px rgba(216, 109, 252, 0.5)',
+                    '0 0 40px rgba(109, 225, 252, 0.5)',
+                    '0 0 20px rgba(216, 109, 252, 0.5)'
+                  ]
                 : [
-                  '0 0 15px rgba(139, 92, 246, 0.3)',
-                  '0 0 30px rgba(236, 72, 153, 0.3)',
-                  '0 0 15px rgba(139, 92, 246, 0.3)'
-                ]
+                    '0 0 15px rgba(216, 109, 252, 0.3)',
+                    '0 0 30px rgba(109, 225, 252, 0.3)',
+                    '0 0 15px rgba(216, 109, 252, 0.3)'
+                  ]
             }}
             transition={{ duration: 3, repeat: Infinity }}
           >
@@ -965,7 +968,7 @@ const SocialProofSection = () => {
           </motion.h2>
           <motion.p 
             className={`text-lg sm:text-xl ${
-              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+              theme === 'dark' ? 'text-gray-200' : 'text-slate-800'
             }`}
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
@@ -975,7 +978,7 @@ const SocialProofSection = () => {
           </motion.p>
         </motion.div>
 
-        {/* Testimonials Grid */}
+        {/* Enhanced Testimonials Grid with Vivid Purple */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-20">
           {testimonials.map((testimonial, index) => (
             <motion.div
@@ -992,8 +995,8 @@ const SocialProofSection = () => {
                 scale: 1.05, 
                 rotateY: 5,
                 boxShadow: theme === 'dark' 
-                  ? '0 25px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(139, 92, 246, 0.4)'
-                  : '0 25px 50px rgba(0, 0, 0, 0.15), 0 0 30px rgba(139, 92, 246, 0.2)'
+                  ? '0 25px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(216, 109, 252, 0.4)'
+                  : '0 25px 50px rgba(0, 0, 0, 0.15), 0 0 30px rgba(216, 109, 252, 0.2)'
               }}
               className={`group p-6 sm:p-8 rounded-3xl backdrop-blur-xl border relative overflow-hidden cursor-pointer ${
                 theme === 'dark' 
@@ -1002,16 +1005,16 @@ const SocialProofSection = () => {
               }`}
               style={{ transformStyle: 'preserve-3d' }}
             >
-              {/* Holographic Effect */}
+              {/* Enhanced Holographic Effect with Vivid Purple */}
               <motion.div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100"
                 style={{
-                  background: `linear-gradient(135deg, rgba(139, 92, 246, 0.1), transparent, rgba(236, 72, 153, 0.1))`
+                  background: `linear-gradient(135deg, rgba(216, 109, 252, 0.1), transparent, rgba(109, 225, 252, 0.1))`
                 }}
                 transition={{ duration: 0.3 }}
               />
               
-              {/* Rating Stars */}
+              {/* Enhanced Rating Stars */}
               <motion.div 
                 className="flex items-center mb-4 sm:mb-6"
                 initial={{ x: -20 }}
@@ -1033,7 +1036,7 @@ const SocialProofSection = () => {
               {/* Quote */}
               <motion.blockquote 
                 className={`mb-6 italic text-base sm:text-lg leading-relaxed relative z-10 ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                  theme === 'dark' ? 'text-gray-200' : 'text-slate-800'
                 }`}
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
@@ -1042,7 +1045,7 @@ const SocialProofSection = () => {
                 "{testimonial.quote}"
               </motion.blockquote>
               
-              {/* Author Info */}
+              {/* Enhanced Author Info */}
               <motion.div 
                 className="flex items-center relative z-10"
                 initial={{ y: 20, opacity: 0 }}
@@ -1058,17 +1061,17 @@ const SocialProofSection = () => {
                 />
                 <div>
                   <div className={`font-bold text-lg sm:text-xl ${
-                    theme === 'dark' ? 'text-white' : 'text-gray-900'
+                    theme === 'dark' ? 'text-white' : 'text-black'
                   }`}>
                     {testimonial.author}
                   </div>
                   <div className={`text-sm sm:text-base ${
-                    theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+                    theme === 'dark' ? 'text-gray-200' : 'text-slate-800'
                   }`}>
                     {testimonial.role}
                   </div>
                   <div className={`text-xs sm:text-sm font-semibold ${
-                    theme === 'dark' ? 'text-purple-400' : 'text-purple-600'
+                    theme === 'dark' ? 'text-violet-400' : 'text-violet-600'
                   }`}>
                     {testimonial.company}
                   </div>
@@ -1078,7 +1081,7 @@ const SocialProofSection = () => {
           ))}
         </div>
 
-        {/* Company Logos */}
+        {/* Enhanced Company Logos with Vivid Purple */}
         <motion.div 
           className={`pt-8 sm:pt-12 border-t ${
             theme === 'dark' ? 'border-white/20' : 'border-gray-200/50'
@@ -1089,7 +1092,7 @@ const SocialProofSection = () => {
         >
           <motion.p 
             className={`text-center mb-8 sm:mb-12 text-base sm:text-lg ${
-              theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+              theme === 'dark' ? 'text-gray-200' : 'text-slate-800'
             }`}
             animate={{ 
               textShadow: theme === 'dark' 
@@ -1107,8 +1110,8 @@ const SocialProofSection = () => {
                 key={index}
                 className={`text-lg sm:text-2xl lg:text-3xl font-bold cursor-pointer relative transition-all duration-300 ${
                   theme === 'dark' 
-                    ? 'text-white/20 hover:text-white/80' 
-                    : 'text-gray-400/60 hover:text-gray-800'
+                    ? 'text-white hover:text-white/80' 
+                    : 'text-gray-200 hover:text-gray-800'
                 }`}
                 whileHover={{ 
                   scale: 1.2, 
@@ -1123,7 +1126,7 @@ const SocialProofSection = () => {
               >
                 {company}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-purple-600/0 via-purple-600/30 to-purple-600/0"
+                  className="absolute inset-0 bg-gradient-to-r from-violet-600/0 via-violet-600/30 to-violet-600/0"
                   whileHover={{ opacity: 1 }}
                   initial={{ opacity: 0 }}
                 />
@@ -1136,7 +1139,7 @@ const SocialProofSection = () => {
   );
 };
 
-// Enhanced Pricing Section
+// Enhanced Pricing Section with Vivid Purple Theme
 const PricingSection = () => {
   const { theme } = useTheme();
   const sectionRef = useRef(null);
@@ -1159,7 +1162,7 @@ const PricingSection = () => {
       popular: false,
       buttonText: "Start Free Trial",
       buttonStyle: "secondary",
-      color: "from-blue-500 to-cyan-500",
+      color: "from-cyan-500 to-blue-500",
       icon: <Rocket className="w-6 h-6 sm:w-8 sm:h-8" />
     },
     {
@@ -1180,7 +1183,7 @@ const PricingSection = () => {
       popular: true,
       buttonText: "Get Started",
       buttonStyle: "primary",
-      color: "from-purple-500 to-pink-500",
+      color: "from-violet-500 to-fuchsia-500",
       icon: <Crown className="w-6 h-6 sm:w-8 sm:h-8" />
     },
     {
@@ -1202,7 +1205,7 @@ const PricingSection = () => {
       popular: false,
       buttonText: "Contact Sales",
       buttonStyle: "secondary",
-      color: "from-emerald-500 to-teal-500",
+      color: "from-emerald-500 to-cyan-500",
       icon: <Shield className="w-6 h-6 sm:w-8 sm:h-8" />
     }
   ];
@@ -1212,24 +1215,24 @@ const PricingSection = () => {
       ref={sectionRef}
       className={`py-16 sm:py-24 lg:py-32 relative overflow-hidden transition-colors duration-500 ${
         theme === 'dark' 
-          ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-black' 
-          : 'bg-gradient-to-br from-gray-50 via-white to-purple-50'
+          ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-black' 
+          : 'bg-gradient-to-br from-gray-50 via-white to-violet-50'
       }`}
     >
       
-      {/* 3D Background */}
+      {/* Enhanced 3D Background with Vivid Purple */}
       <div className="absolute inset-0 opacity-30">
         <Canvas>
           <Suspense fallback={null}>
             <ambientLight intensity={theme === 'dark' ? 0.4 : 0.6} />
             <pointLight position={[10, 10, 10]} intensity={0.8} />
-            <pointLight position={[-10, -10, -10]} intensity={0.3} color="#8b5cf6" />
+            <pointLight position={[-10, -10, -10]} intensity={0.3} color="#D86DFC" />
             
             <Float speed={2} rotationIntensity={1} floatIntensity={0.5}>
               <Text
                 position={[-8, 3, -5]}
                 fontSize={1.5}
-                color={theme === 'dark' ? "#8b5cf6" : "#7c3aed"}
+                color={theme === 'dark' ? "#D86DFC" : "#8B5A2B"}
                 anchorX="center"
                 anchorY="middle"
                 rotation={[0, 0.3, 0]}
@@ -1243,7 +1246,7 @@ const PricingSection = () => {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
+        {/* Enhanced Section Header with Vivid Purple */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -1253,8 +1256,8 @@ const PricingSection = () => {
           <motion.div
             className={`inline-flex items-center space-x-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full border mb-4 sm:mb-6 ${
               theme === 'dark'
-                ? 'bg-purple-900/30 border-purple-700/50'
-                : 'bg-purple-100 border-purple-200'
+                ? 'bg-violet-900/30 border-violet-700/50'
+                : 'bg-violet-100 border-violet-200'
             }`}
             whileHover={{ scale: 1.05, rotate: 2 }}
             transition={{ type: "spring", stiffness: 300 }}
@@ -1264,11 +1267,11 @@ const PricingSection = () => {
               transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
             >
               <Zap className={`w-4 h-4 sm:w-5 sm:h-5 ${
-                theme === 'dark' ? 'text-purple-400' : 'text-purple-600'
+                theme === 'dark' ? 'text-violet-400' : 'text-violet-600'
               }`} />
             </motion.div>
             <span className={`text-xs sm:text-sm font-semibold ${
-              theme === 'dark' ? 'text-purple-300' : 'text-purple-800'
+              theme === 'dark' ? 'text-violet-300' : 'text-violet-800'
             }`}>
               Flexible Pricing
             </span>
@@ -1276,30 +1279,30 @@ const PricingSection = () => {
           
           <motion.h2 
             className={`text-3xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 transition-colors ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
+              theme === 'dark' ? 'text-white' : 'text-black'
             }`}
             animate={{
               textShadow: theme === 'dark' 
                 ? [
-                  '0 0 20px rgba(139, 92, 246, 0.3)',
-                  '0 0 40px rgba(236, 72, 153, 0.3)',
-                  '0 0 20px rgba(139, 92, 246, 0.3)'
-                ]
+                    '0 0 20px rgba(216, 109, 252, 0.3)',
+                    '0 0 40px rgba(109, 225, 252, 0.3)',
+                    '0 0 20px rgba(216, 109, 252, 0.3)'
+                  ]
                 : [
-                  '0 0 15px rgba(139, 92, 246, 0.2)',
-                  '0 0 30px rgba(236, 72, 153, 0.2)',
-                  '0 0 15px rgba(139, 92, 246, 0.2)'
-                ]
+                    '0 0 15px rgba(216, 109, 252, 0.2)',
+                    '0 0 30px rgba(109, 225, 252, 0.2)',
+                    '0 0 15px rgba(216, 109, 252, 0.2)'
+                  ]
             }}
             transition={{ duration: 4, repeat: Infinity }}
           >
             Simple, Transparent
-            <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent"> Pricing</span>
+            <span className="bg-gradient-to-r from-violet-600 via-fuchsia-600 to-cyan-600 bg-clip-text text-transparent"> Pricing</span>
           </motion.h2>
           
           <motion.p 
             className={`text-lg sm:text-xl transition-colors max-w-3xl mx-auto ${
-              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+              theme === 'dark' ? 'text-gray-300' : 'text-slate-600'
             }`}
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
@@ -1309,7 +1312,7 @@ const PricingSection = () => {
           </motion.p>
         </motion.div>
 
-        {/* Pricing Cards */}
+        {/* Enhanced Pricing Cards with Vivid Purple */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 mb-12 sm:mb-16">
           {plans.map((plan, index) => (
             <motion.div
@@ -1332,23 +1335,23 @@ const PricingSection = () => {
                 className={`relative p-6 sm:p-8 rounded-3xl backdrop-blur-xl border-2 overflow-hidden h-full ${
                   plan.popular 
                     ? theme === 'dark'
-                      ? 'border-purple-500 bg-gray-800/80' 
-                      : 'border-purple-500 bg-white/80'
+                      ? 'border-violet-500 bg-slate-800/80' 
+                      : 'border-violet-500 bg-white/80'
                     : theme === 'dark'
-                      ? 'border-gray-700/30 bg-gray-800/60'
+                      ? 'border-slate-700/30 bg-slate-800/60'
                       : 'border-gray-200/50 bg-white/60'
-                } ${selectedPlan === index ? 'ring-4 ring-purple-400/50' : ''}`}
+                } ${selectedPlan === index ? 'ring-4 ring-violet-400/50' : ''}`}
                 whileHover={{ 
                   scale: 1.02,
                   rotateY: 5,
                   boxShadow: theme === 'dark' 
-                    ? '0 25px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(139, 92, 246, 0.4)'
-                    : '0 25px 50px rgba(0, 0, 0, 0.15), 0 0 30px rgba(139, 92, 246, 0.2)',
+                    ? '0 25px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(216, 109, 252, 0.4)'
+                    : '0 25px 50px rgba(0, 0, 0, 0.15), 0 0 30px rgba(216, 109, 252, 0.2)',
                   z: 30
                 }}
                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
               >
-                {/* Popular Badge */}
+                {/* Enhanced Popular Badge with Vivid Purple */}
                 {plan.popular && (
                   <motion.div
                     className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20"
@@ -1356,7 +1359,7 @@ const PricingSection = () => {
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ delay: index * 0.2 + 0.5, type: "spring" }}
                   >
-                    <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-bold shadow-lg">
+                    <div className="bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-bold shadow-lg">
                       <motion.span
                         animate={{ scale: [1, 1.1, 1] }}
                         transition={{ duration: 2, repeat: Infinity }}
@@ -1367,7 +1370,7 @@ const PricingSection = () => {
                   </motion.div>
                 )}
 
-                {/* Plan Icon */}
+                {/* Enhanced Plan Icon with Vivid Purple */}
                 <motion.div
                   className={`inline-flex p-3 sm:p-4 rounded-2xl bg-gradient-to-r ${plan.color} text-white mb-4 sm:mb-6`}
                   whileHover={{ 
@@ -1380,11 +1383,11 @@ const PricingSection = () => {
                   {plan.icon}
                 </motion.div>
 
-                {/* Plan Details */}
+                {/* Enhanced Plan Details */}
                 <div className="text-center mb-6 sm:mb-8">
                   <motion.h3 
                     className={`text-xl sm:text-2xl font-bold mb-2 transition-colors ${
-                      theme === 'dark' ? 'text-white' : 'text-gray-900'
+                      theme === 'dark' ? 'text-white' : 'text-black'
                     }`}
                     animate={{ scale: selectedPlan === index ? 1.05 : 1 }}
                   >
@@ -1392,7 +1395,7 @@ const PricingSection = () => {
                   </motion.h3>
                   <motion.p 
                     className={`mb-4 sm:mb-6 transition-colors text-sm sm:text-base ${
-                      theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                      theme === 'dark' ? 'text-gray-300' : 'text-slate-600'
                     }`}
                     initial={{ opacity: 0 }}
                     animate={isInView ? { opacity: 1 } : {}}
@@ -1407,13 +1410,13 @@ const PricingSection = () => {
                   >
                     <motion.span 
                       className={`text-4xl sm:text-6xl font-bold transition-colors ${
-                        theme === 'dark' ? 'text-white' : 'text-gray-900'
+                        theme === 'dark' ? 'text-white' : 'text-black'
                       }`}
                       animate={{
                         textShadow: plan.popular 
                           ? theme === 'dark'
-                            ? ['0 0 20px rgba(139, 92, 246, 0.5)', '0 0 0px transparent', '0 0 20px rgba(139, 92, 246, 0.5)']
-                            : ['0 0 15px rgba(139, 92, 246, 0.3)', '0 0 0px transparent', '0 0 15px rgba(139, 92, 246, 0.3)']
+                            ? ['0 0 20px rgba(216, 109, 252, 0.5)', '0 0 0px transparent', '0 0 20px rgba(216, 109, 252, 0.5)']
+                            : ['0 0 15px rgba(216, 109, 252, 0.3)', '0 0 0px transparent', '0 0 15px rgba(216, 109, 252, 0.3)']
                           : '0 0 0px transparent'
                       }}
                       transition={{ duration: 3, repeat: Infinity }}
@@ -1421,20 +1424,20 @@ const PricingSection = () => {
                       {plan.price}
                     </motion.span>
                     <span className={`text-lg sm:text-xl transition-colors ${
-                      theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+                      theme === 'dark' ? 'text-gray-400' : 'text-slate-600'
                     }`}>
                       {plan.period}
                     </span>
                   </motion.div>
                 </div>
 
-                {/* Features List */}
+                {/* Enhanced Features List */}
                 <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                   {plan.features.map((feature, featureIndex) => (
                     <motion.li
                       key={featureIndex}
                       className={`flex items-center transition-colors text-sm sm:text-base ${
-                        theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                        theme === 'dark' ? 'text-gray-300' : 'text-slate-700'
                       }`}
                       initial={{ opacity: 0, x: -20 }}
                       animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -1453,7 +1456,7 @@ const PricingSection = () => {
                   ))}
                 </ul>
 
-                {/* CTA Button */}
+                {/* Enhanced CTA Button with Vivid Purple */}
                 <MagneticButton
                   variant={plan.buttonStyle}
                   className={`w-full ${
@@ -1472,7 +1475,7 @@ const PricingSection = () => {
           ))}
         </div>
 
-        {/* Additional Info */}
+        {/* Enhanced Additional Info with Vivid Purple */}
         <motion.div 
           className="text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -1481,7 +1484,7 @@ const PricingSection = () => {
         >
           <motion.p 
             className={`transition-colors mb-4 text-sm sm:text-base ${
-              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+              theme === 'dark' ? 'text-gray-300' : 'text-slate-600'
             }`}
             whileHover={{ scale: 1.05 }}
           >
@@ -1490,14 +1493,14 @@ const PricingSection = () => {
               href="#contact" 
               className={`font-semibold ml-2 transition-colors ${
                 theme === 'dark' 
-                  ? 'text-purple-400 hover:text-purple-300' 
-                  : 'text-purple-600 hover:text-purple-700'
+                  ? 'text-violet-400 hover:text-violet-300' 
+                  : 'text-violet-600 hover:text-violet-700'
               }`}
               whileHover={{ 
                 scale: 1.1,
                 textShadow: theme === 'dark' 
-                  ? '0 0 10px rgba(139, 92, 246, 0.5)' 
-                  : '0 0 10px rgba(139, 92, 246, 0.3)'
+                  ? '0 0 10px rgba(216, 109, 252, 0.5)' 
+                  : '0 0 10px rgba(216, 109, 252, 0.3)'
               }}
             >
               Contact our sales team
@@ -1506,7 +1509,7 @@ const PricingSection = () => {
           
           <motion.div 
             className={`flex flex-wrap justify-center items-center gap-4 sm:gap-6 text-xs sm:text-sm ${
-              theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+              theme === 'dark' ? 'text-gray-400' : 'text-slate-500'
             }`}
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
@@ -1522,7 +1525,7 @@ const PricingSection = () => {
                 className="flex items-center space-x-2"
                 whileHover={{ 
                   scale: 1.1, 
-                  color: theme === 'dark' ? '#8b5cf6' : '#7c3aed'
+                  color: theme === 'dark' ? '#D86DFC' : '#8B5A2B'
                 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
@@ -1537,7 +1540,7 @@ const PricingSection = () => {
   );
 };
 
-// Enhanced Final CTA Section
+// Enhanced Final CTA Section with Vivid Purple Theme
 const FinalCTASection = () => {
   const { theme } = useTheme();
   const [isHovered, setIsHovered] = useState(false);
@@ -1549,20 +1552,20 @@ const FinalCTASection = () => {
       ref={sectionRef}
       className={`py-16 sm:py-24 lg:py-32 relative overflow-hidden transition-colors duration-500 ${
         theme === 'dark' 
-          ? 'bg-gradient-to-br from-purple-900 via-blue-900 to-purple-900' 
-          : 'bg-gradient-to-br from-purple-600 via-blue-600 to-purple-600'
+          ? 'bg-gradient-to-br from-violet-900 via-indigo-900 to-violet-900' 
+          : 'bg-gradient-to-br from-violet-600 via-indigo-600 to-violet-600'
       }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       
-      {/* 3D Background */}
+      {/* Enhanced 3D Background with Vivid Purple */}
       <div className="absolute inset-0">
         <Canvas>
           <Suspense fallback={null}>
             <ambientLight intensity={0.3} />
             <pointLight position={[10, 10, 10]} intensity={0.8} />
-            <pointLight position={[-10, -10, -10]} intensity={0.3} color="#8b5cf6" />
+            <pointLight position={[-10, -10, -10]} intensity={0.3} color="#D86DFC" />
             
             <Stars
               radius={200}
@@ -1577,8 +1580,8 @@ const FinalCTASection = () => {
             <Float speed={1.5} rotationIntensity={0.5} floatIntensity={2}>
               <Torus args={[3, 0.8, 16, 32]} position={[-10, 5, -8]} rotation={[0.5, 0, 0]}>
                 <meshStandardMaterial 
-                  color="#8b5cf6" 
-                  emissive="#8b5cf6" 
+                  color="#D86DFC" 
+                  emissive="#D86DFC" 
                   emissiveIntensity={0.3}
                   transparent
                   opacity={0.6}
@@ -1589,7 +1592,7 @@ const FinalCTASection = () => {
         </Canvas>
       </div>
       
-      {/* Overlay */}
+      {/* Enhanced Overlay */}
       <div className="absolute inset-0 bg-black/30"></div>
       
       <div className="relative z-10 max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8">
@@ -1599,15 +1602,15 @@ const FinalCTASection = () => {
           transition={{ duration: 1, type: "spring", stiffness: 100 }}
         >
           
-          {/* Badge */}
+          {/* Enhanced Badge with Vivid Purple */}
           <motion.div
-            className="inline-flex items-center space-x-3 px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-purple-600/80 to-pink-600/80 backdrop-blur-xl border border-white/30 mb-6 sm:mb-8"
+            className="inline-flex items-center space-x-3 px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-violet-600/80 to-fuchsia-600/80 backdrop-blur-xl border border-white/30 mb-6 sm:mb-8"
             initial={{ scale: 0, rotate: -180 }}
             animate={isInView ? { scale: 1, rotate: 0 } : {}}
             transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
             whileHover={{ 
               scale: 1.05,
-              boxShadow: '0 0 30px rgba(139, 92, 246, 0.6)',
+              boxShadow: '0 0 30px rgba(216, 109, 252, 0.6)',
               rotate: 2
             }}
           >
@@ -1628,44 +1631,43 @@ const FinalCTASection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Main Headline */}
-<motion.h2 
-  className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-8 leading-tight text-white"
-  initial={{ opacity: 0, y: 30 }}
-  animate={isInView ? { 
-    opacity: 1, 
-    y: 0,
-    textShadow: [
-      '0 0 20px rgba(255, 255, 255, 0.5)',
-      '0 0 40px rgba(139, 92, 246, 0.8)',
-      '0 0 60px rgba(236, 72, 153, 0.6)',
-      '0 0 40px rgba(139, 92, 246, 0.8)',
-      '0 0 20px rgba(255, 255, 255, 0.5)'
-    ]
-  } : {}}
-  transition={{ 
-    opacity: { delay: 0.5, duration: 0.8 },
-    y: { delay: 0.5, duration: 0.8 },
-    textShadow: { duration: 4, repeat: Infinity }
-  }}
->
-  Ready to 
-  <motion.span 
-    className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent"
-    animate={{
-      backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-    }}
-    transition={{ duration: 3, repeat: Infinity }}
-    style={{ backgroundSize: '200% 200%' }}
-  >
-    Revolutionize
-  </motion.span>
-  <br />
-  Your Business?
-</motion.h2>
+          {/* Enhanced Main Headline with Vivid Purple */}
+          <motion.h2 
+            className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-8 leading-tight text-white"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { 
+              opacity: 1, 
+              y: 0,
+              textShadow: [
+                '0 0 20px rgba(255, 255, 255, 0.5)',
+                '0 0 40px rgba(216, 109, 252, 0.8)',
+                '0 0 60px rgba(109, 225, 252, 0.6)',
+                '0 0 40px rgba(216, 109, 252, 0.8)',
+                '0 0 20px rgba(255, 255, 255, 0.5)'
+              ]
+            } : {}}
+            transition={{ 
+              opacity: { delay: 0.5, duration: 0.8 },
+              y: { delay: 0.5, duration: 0.8 },
+              textShadow: { duration: 4, repeat: Infinity }
+            }}
+          >
+            Ready to 
+            <motion.span 
+              className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent"
+              animate={{
+                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+              }}
+              transition={{ duration: 3, repeat: Infinity }}
+              style={{ backgroundSize: '200% 200%' }}
+            >
+              Revolutionize
+            </motion.span>
+            <br />
+            Your Business?
+          </motion.h2>
 
-
-          {/* Subheadline */}
+          {/* Enhanced Subheadline */}
           <motion.p 
             className="text-lg sm:text-xl lg:text-2xl text-gray-300 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
@@ -1676,7 +1678,7 @@ const FinalCTASection = () => {
             Start your journey to extraordinary growth today – no credit card required.
           </motion.p>
           
-          {/* CTA Buttons */}
+          {/* Enhanced CTA Buttons with Vivid Purple */}
           <motion.div 
             className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-8 sm:mb-12"
             initial={{ opacity: 0, y: 30 }}
@@ -1688,8 +1690,8 @@ const FinalCTASection = () => {
               icon={Rocket}
               className="w-full sm:w-auto text-white text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-6 rounded-2xl"
               style={{
-                background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #06b6d4 100%)',
-                boxShadow: '0 20px 40px rgba(139, 92, 246, 0.4)',
+                background: 'linear-gradient(135deg, #D86DFC 0%, #6DE1FC 50%, #FCD68D 100%)',
+                boxShadow: '0 20px 40px rgba(216, 109, 252, 0.4)',
               }}
             >
               Start Your Free Trial
@@ -1704,7 +1706,7 @@ const FinalCTASection = () => {
             </MagneticButton>
           </motion.div>
 
-          {/* Trust Indicators */}
+          {/* Enhanced Trust Indicators with Vivid Purple */}
           <motion.div 
             className="flex flex-wrap justify-center items-center gap-4 sm:gap-8 text-gray-400 mb-6 sm:mb-8"
             initial={{ opacity: 0 }}
@@ -1737,7 +1739,7 @@ const FinalCTASection = () => {
             ))}
           </motion.div>
 
-          {/* Urgency Banner */}
+          {/* Enhanced Urgency Banner with Vivid Purple */}
           <motion.div
             className="inline-flex items-center space-x-3 sm:space-x-4 px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-red-600/80 to-orange-600/80 backdrop-blur-xl border border-white/30"
             initial={{ opacity: 0, scale: 0.8 }}

@@ -23,7 +23,7 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="min-h-screen bg-white  transition-colors duration-300">
             <Navbar />
-            <main className="mt-[100px]">
+            <main className="mt-[80px] ">
               {children}
             </main>
             <Footer />

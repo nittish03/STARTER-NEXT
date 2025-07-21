@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { cn } from "@/lib/util";
 import * as THREE from 'three';
+
 interface SocialLink {
   icon: React.ComponentType<{ className?: string }>;
   href: string;
@@ -30,7 +31,7 @@ interface FooterSection {
   }>;
 }
 
-// Enhanced 3D Floating Network Visualization with Theme Support
+// Enhanced 3D Floating Network Visualization with Vivid Purple Theme
 const NetworkVisualization = ({ theme }: { theme: string }) => {
   const networkRef = useRef<THREE.Group>(null);
   const nodesCount = 25;
@@ -68,20 +69,20 @@ const NetworkVisualization = ({ theme }: { theme: string }) => {
               position={[x, y, z]}
             >
               <meshStandardMaterial 
-                color={i % 4 === 0 ? "#8b5cf6" : i % 4 === 1 ? "#ec4899" : i % 4 === 2 ? "#06b6d4" : "#f59e0b"}
-                emissive={i % 4 === 0 ? "#8b5cf6" : i % 4 === 1 ? "#ec4899" : i % 4 === 2 ? "#06b6d4" : "#f59e0b"}
+                color={i % 4 === 0 ? "#D86DFC" : i % 4 === 1 ? "#6DE1FC" : i % 4 === 2 ? "#FCD68D" : "#4A4A59"}
+                emissive={i % 4 === 0 ? "#D86DFC" : i % 4 === 1 ? "#6DE1FC" : i % 4 === 2 ? "#FCD68D" : "#4A4A59"}
                 emissiveIntensity={theme === 'dark' ? 0.5 : 0.3}
                 transparent
                 opacity={theme === 'dark' ? 0.9 : 0.7}
               />
             </Sphere>
             
-            {/* Connection lines */}
+            {/* Connection lines with vivid purple theme */}
             {i < nodesCount - 1 && (
               <mesh position={[x / 2, y / 2, z / 2]}>
                 <cylinderGeometry args={[0.02, 0.02, radius / 4]} />
                 <meshStandardMaterial 
-                  color="#8b5cf6" 
+                  color="#D86DFC" 
                   transparent 
                   opacity={theme === 'dark' ? 0.3 : 0.2}
                 />
@@ -94,7 +95,7 @@ const NetworkVisualization = ({ theme }: { theme: string }) => {
   );
 };
 
-// Enhanced 3D Social Media Icons with Theme Support
+// Enhanced 3D Social Media Icons with Vivid Purple Theme
 const Social3DIcon = ({ 
   position, 
   icon, 
@@ -129,10 +130,10 @@ const Social3DIcon = ({
         />
       </Dodecahedron>
       
-      {/* Orbital Ring */}
+      {/* Orbital Ring with vivid purple accent */}
       <Ring args={[1.2, 1.4, 16]} position={position} rotation={[Math.PI / 2, 0, 0]}>
         <meshStandardMaterial 
-          color={color} 
+          color="#D86DFC" 
           transparent 
           opacity={theme === 'dark' ? 0.4 : 0.2}
         />
@@ -141,7 +142,7 @@ const Social3DIcon = ({
   );
 };
 
-// Enhanced Magnetic Interactive Element with Theme Support
+// Enhanced Magnetic Interactive Element with Vivid Purple Theme
 interface MagneticElementProps {
   children: React.ReactNode;
   className?: string;
@@ -206,7 +207,8 @@ interface HolographicLinkProps {
   delay?: number;
   theme?: string;
 }
-// Enhanced Holographic Link Component with Theme Support
+
+// Enhanced Holographic Link Component with Vivid Purple Theme
 const HolographicLink = ({ 
   href, 
   children, 
@@ -231,15 +233,15 @@ const HolographicLink = ({
         className={cn(
           "group relative flex items-center transition-all duration-300 p-3 rounded-xl overflow-hidden",
           theme === 'dark' 
-            ? "text-gray-400 hover:text-purple-400" 
-            : "text-gray-600 hover:text-purple-600"
+            ? "text-gray-100 hover:text-violet-400" 
+            : "text-slate-800 hover:text-violet-600"
         )}
       >
-        {/* Enhanced Holographic Background */}
+        {/* Enhanced Holographic Background with vivid purple */}
         <motion.div
           className={cn(
-            "absolute inset-0 bg-gradient-to-r from-purple-600/10 via-pink-600/10 to-blue-600/10",
-            theme === 'light' && "from-purple-600/5 via-pink-600/5 to-blue-600/5"
+            "absolute inset-0 bg-gradient-to-r from-violet-600/10 via-fuchsia-600/10 to-cyan-400/10",
+            theme === 'light' && "from-violet-600/5 via-fuchsia-600/5 to-cyan-400/5"
           )}
           animate={{
             opacity: isHovered ? 1 : 0,
@@ -276,14 +278,14 @@ const HolographicLink = ({
           </motion.div>
         )}
         
-        {/* Text */}
+        {/* Text with vivid purple glow */}
         <motion.span
           animate={{
             x: isHovered ? 8 : 0,
             textShadow: isHovered 
               ? theme === 'dark' 
-                ? '0 0 10px rgba(139, 92, 246, 0.6)' 
-                : '0 0 10px rgba(139, 92, 246, 0.4)'
+                ? '0 0 10px rgba(216, 109, 252, 0.6)' 
+                : '0 0 10px rgba(216, 109, 252, 0.4)'
               : '0 0 0px transparent',
           }}
           transition={{ duration: 0.3 }}
@@ -292,7 +294,7 @@ const HolographicLink = ({
           {children}
         </motion.span>
         
-        {/* Enhanced Particle Effects */}
+        {/* Enhanced Particle Effects with vivid purple */}
         <AnimatePresence>
           {isHovered && (
             <>
@@ -301,7 +303,7 @@ const HolographicLink = ({
                   key={i}
                   className={cn(
                     "absolute w-1 h-1 rounded-full",
-                    theme === 'dark' ? "bg-purple-400" : "bg-purple-600"
+                    theme === 'dark' ? "bg-violet-400" : "bg-violet-600"
                   )}
                   initial={{
                     x: '50%',
@@ -324,14 +326,14 @@ const HolographicLink = ({
           )}
         </AnimatePresence>
         
-        {/* Glowing Border Effect */}
+        {/* Glowing Border Effect with vivid purple */}
         <motion.div
           className="absolute inset-0 rounded-xl border-2 border-transparent"
           animate={{
             borderColor: isHovered 
               ? theme === 'dark'
-                ? 'rgba(139, 92, 246, 0.3)'
-                : 'rgba(139, 92, 246, 0.2)'
+                ? 'rgba(216, 109, 252, 0.3)'
+                : 'rgba(216, 109, 252, 0.2)'
               : 'transparent',
           }}
           transition={{ duration: 0.3 }}
@@ -347,7 +349,7 @@ const Footer = () => {
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isNewsletterHovered, setIsNewsletterHovered] = useState(false);
   const footerRef = useRef<HTMLElement>(null);
-  const { theme } = useTheme(); // Added theme hook!
+  const { theme } = useTheme();
   
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -441,33 +443,33 @@ const Footer = () => {
     { icon: Youtube, href: "https://youtube.com", label: "YouTube", color: "#FF0000" }
   ];
 
-  // Enhanced Loading state with theme support
+  // Enhanced Loading state with vivid purple theme
   if (!mounted) {
     return (
       <footer className={cn(
         "relative overflow-hidden transition-colors duration-500",
         theme === 'dark' 
-          ? "bg-gray-900 text-white" 
-          : "bg-gray-100 text-gray-900"
+          ? "bg-slate-900 text-white" 
+          : "bg-gray-50 text-black"
       )}>
         <div className="relative z-10">
           <div className={cn(
             "border-b",
-            theme === 'dark' ? "border-gray-800" : "border-gray-300"
+            theme === 'dark' ? "border-slate-800" : "border-gray-200"
           )}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
               <div className="text-center">
                 <div className={cn(
                   "h-8 rounded-lg w-64 mx-auto mb-4 animate-pulse",
                   theme === 'dark' 
-                    ? "bg-gradient-to-r from-gray-800 to-gray-700" 
-                    : "bg-gradient-to-r from-gray-300 to-gray-200"
+                    ? "bg-gradient-to-r from-slate-800 to-slate-700" 
+                    : "bg-gradient-to-r from-gray-200 to-gray-100"
                 )}></div>
                 <div className={cn(
                   "h-4 rounded w-96 mx-auto mb-8 animate-pulse",
                   theme === 'dark' 
-                    ? "bg-gradient-to-r from-gray-800 to-gray-700" 
-                    : "bg-gradient-to-r from-gray-300 to-gray-200"
+                    ? "bg-gradient-to-r from-slate-800 to-slate-700" 
+                    : "bg-gradient-to-r from-gray-200 to-gray-100"
                 )}></div>
               </div>
             </div>
@@ -483,8 +485,8 @@ const Footer = () => {
       className={cn(
         "relative overflow-hidden transition-all duration-500 transform-gpu",
         theme === 'dark' 
-          ? "bg-gradient-to-br from-gray-900 via-purple-900/20 to-black text-white" 
-          : "bg-gradient-to-br from-gray-50 via-purple-50/30 to-white text-gray-900"
+          ? "bg-gradient-to-br from-slate-900 via-indigo-950/30 to-black text-white" 
+          : "bg-gradient-to-br from-gray-50 via-violet-50/30 to-white text-black"
       )}
       style={{
         rotateX,
@@ -492,13 +494,13 @@ const Footer = () => {
         transformStyle: 'preserve-3d',
       }}
     >
-      {/* Enhanced 3D Background Canvas with Theme Support */}
+      {/* Enhanced 3D Background Canvas with Vivid Purple Theme */}
       <div className="absolute inset-0 opacity-40">
         <Canvas camera={{ position: [0, 0, 10], fov: 75 }}>
           <Suspense fallback={null}>
             <ambientLight intensity={theme === 'dark' ? 0.4 : 0.6} />
             <pointLight position={[10, 10, 10]} intensity={0.8} />
-            <pointLight position={[-10, -10, -10]} intensity={0.3} color="#8b5cf6" />
+            <pointLight position={[-10, -10, -10]} intensity={0.3} color="#D86DFC" />
             
             <Stars
               radius={100}
@@ -512,12 +514,12 @@ const Footer = () => {
             
             <NetworkVisualization theme={theme || 'dark'} />
             
-            {/* Floating Footer Elements */}
+            {/* Floating Footer Elements with vivid purple */}
             <Float speed={1} rotationIntensity={0.3} floatIntensity={1}>
               <Text
                 position={[-12, 6, -8]}
                 fontSize={1.2}
-                color={theme === 'dark' ? "#8b5cf6" : "#7c3aed"}
+                color={theme === 'dark' ? "#D86DFC" : "#6B21A8"}
                 anchorX="center"
                 anchorY="middle"
                 rotation={[0, 0.3, 0]}
@@ -531,14 +533,14 @@ const Footer = () => {
             <Float speed={1.5} rotationIntensity={0.4} floatIntensity={0.8}>
               <Ring args={[2, 2.5, 32]} position={[12, -4, -6]} rotation={[0.5, 0, 0]}>
                 <meshStandardMaterial 
-                  color="#ec4899" 
+                  color="#6DE1FC" 
                   transparent 
                   opacity={theme === 'dark' ? 0.4 : 0.3} 
                 />
               </Ring>
             </Float>
             
-            {/* Enhanced 3D Social Icons */}
+            {/* Enhanced 3D Social Icons with vivid purple theme */}
             {socialLinks.map((social, index) => (
               <Social3DIcon
                 key={social.label}
@@ -556,7 +558,7 @@ const Footer = () => {
         </Canvas>
       </div>
 
-      {/* Enhanced Animated Background Elements */}
+      {/* Enhanced Animated Background Elements with vivid purple */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           animate={{
@@ -572,8 +574,8 @@ const Footer = () => {
           className={cn(
             "absolute -top-4 -right-4 w-96 h-96 rounded-full blur-3xl",
             theme === 'dark' 
-              ? "bg-purple-500/10" 
-              : "bg-purple-500/5"
+              ? "bg-violet-500/10" 
+              : "bg-violet-500/5"
           )}
         />
         <motion.div
@@ -590,15 +592,15 @@ const Footer = () => {
           className={cn(
             "absolute -bottom-8 -left-4 w-96 h-96 rounded-full blur-3xl",
             theme === 'dark' 
-              ? "bg-pink-500/10" 
-              : "bg-pink-500/5"
+              ? "bg-cyan-500/10" 
+              : "bg-cyan-500/5"
           )}
         />
       </div>
 
       <div className="relative z-10">
         
-        {/* Enhanced Newsletter Section with Theme Support */}
+        {/* Enhanced Newsletter Section with Vivid Purple Theme */}
         <div className={cn(
           "border-b backdrop-blur-sm",
           theme === 'dark' 
@@ -616,19 +618,19 @@ const Footer = () => {
                 onMouseEnter={() => setIsNewsletterHovered(true)}
                 onMouseLeave={() => setIsNewsletterHovered(false)}
               >
-                {/* Enhanced Icon Badge */}
+                {/* Enhanced Icon Badge with vivid purple */}
                 <motion.div
                   className={cn(
                     "inline-flex items-center space-x-3 px-8 py-4 rounded-full backdrop-blur-md border mb-8",
                     theme === 'dark' 
-                      ? "bg-gradient-to-r from-purple-600/20 to-pink-600/20 border-white/20" 
-                      : "bg-gradient-to-r from-purple-100/80 to-pink-100/80 border-purple-200/50"
+                      ? "bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 border-white/20" 
+                      : "bg-gradient-to-r from-violet-100/80 to-fuchsia-100/80 border-violet-200/50"
                   )}
                   whileHover={{ 
                     scale: 1.05,
                     boxShadow: theme === 'dark'
-                      ? '0 0 30px rgba(139, 92, 246, 0.4)'
-                      : '0 0 20px rgba(139, 92, 246, 0.2)',
+                      ? '0 0 30px rgba(216, 109, 252, 0.4)'
+                      : '0 0 20px rgba(216, 109, 252, 0.2)',
                     rotateY: 5,
                   }}
                   transition={{ type: "spring", stiffness: 300 }}
@@ -639,12 +641,12 @@ const Footer = () => {
                   >
                     <Sparkles className={cn(
                       "w-6 h-6",
-                      theme === 'dark' ? "text-purple-400" : "text-purple-600"
+                      theme === 'dark' ? "text-violet-400" : "text-violet-600"
                     )} />
                   </motion.div>
                   <span className={cn(
                     "text-lg font-bold",
-                    theme === 'dark' ? "text-purple-300" : "text-purple-700"
+                    theme === 'dark' ? "text-violet-300" : "text-violet-700"
                   )}>
                     Newsletter
                   </span>
@@ -662,33 +664,33 @@ const Footer = () => {
                 <motion.h3 
                   className={cn(
                     "text-5xl sm:text-6xl font-bold mb-8",
-                    theme === 'dark' ? "text-white" : "text-gray-900"
+                    theme === 'dark' ? "text-white" : "text-black"
                   )}
                   animate={{
                     textShadow: isNewsletterHovered
                       ? theme === 'dark'
                         ? [
-                          '0 0 20px rgba(139, 92, 246, 0.6)',
-                          '0 0 40px rgba(236, 72, 153, 0.6)',
-                          '0 0 20px rgba(139, 92, 246, 0.6)'
-                        ]
+                            '0 0 20px rgba(216, 109, 252, 0.6)',
+                            '0 0 40px rgba(109, 225, 252, 0.6)',
+                            '0 0 20px rgba(216, 109, 252, 0.6)'
+                          ]
                         : [
-                          '0 0 15px rgba(139, 92, 246, 0.4)',
-                          '0 0 30px rgba(236, 72, 153, 0.4)',
-                          '0 0 15px rgba(139, 92, 246, 0.4)'
-                        ]
+                            '0 0 15px rgba(216, 109, 252, 0.4)',
+                            '0 0 30px rgba(109, 225, 252, 0.4)',
+                            '0 0 15px rgba(216, 109, 252, 0.4)'
+                          ]
                       : '0 0 0px transparent'
                   }}
                   transition={{ duration: 4, repeat: Infinity }}
                 >
                   Stay in the 
-                  <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent"> Loop</span>
+                  <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent"> Loop</span>
                 </motion.h3>
                 
                 <motion.p 
                   className={cn(
                     "text-xl mb-12 max-w-4xl mx-auto leading-relaxed",
-                    theme === 'dark' ? "text-gray-300" : "text-gray-600"
+                    theme === 'dark' ? "text-gray-10" : "text-slate-800"
                   )}
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
@@ -711,10 +713,10 @@ const Footer = () => {
                         onChange={(e) => setNewsletterEmail(e.target.value)}
                         placeholder="Enter your email"
                         className={cn(
-                          "w-full px-8 py-5 backdrop-blur-md border rounded-2xl font-medium text-lg placeholder-opacity-60 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300",
+                          "w-full px-8 py-5 backdrop-blur-md border rounded-2xl font-medium text-lg placeholder-opacity-60 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-300",
                           theme === 'dark' 
-                            ? "bg-white/10 border-white/20 text-white placeholder-gray-400" 
-                            : "bg-white/60 border-gray-300/50 text-gray-900 placeholder-gray-500"
+                            ? "bg-slate-800 border-slate-700/30 text-white placeholder-gray-100" 
+                            : "bg-slate-200 border-gray-100 text-black placeholder-slate-100"
                         )}
                         style={{
                           boxShadow: theme === 'dark' 
@@ -729,7 +731,7 @@ const Footer = () => {
                       >
                         <Mail className={cn(
                           "w-6 h-6",
-                          theme === 'dark' ? "text-gray-400" : "text-gray-500"
+                          theme === 'dark' ? "text-gray-100" : "text-slate-800"
                         )} />
                       </motion.div>
                     </motion.div>
@@ -738,10 +740,10 @@ const Footer = () => {
                   <MagneticElement strength={0.3} theme={theme}>
                     <motion.button
                       type="submit"
-                      className="flex items-center px-10 py-5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl font-bold text-white text-lg shadow-2xl relative overflow-hidden"
+                      className="flex items-center px-10 py-5 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-2xl font-bold text-white text-lg shadow-2xl relative overflow-hidden"
                       whileHover={{ 
                         scale: 1.05,
-                        boxShadow: '0 25px 50px rgba(139, 92, 246, 0.4)',
+                        boxShadow: '0 25px 50px rgba(216, 109, 252, 0.4)',
                         rotateY: 5,
                       }}
                       whileTap={{ scale: 0.95 }}
@@ -792,11 +794,11 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Enhanced Main Footer Content with Theme Support */}
+        {/* Enhanced Main Footer Content with Vivid Purple Theme */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-16">
             
-            {/* Enhanced Company Info with 3D Effects */}
+            {/* Enhanced Company Info with vivid purple 3D Effects */}
             <div className="lg:col-span-2">
               <motion.div
                 initial={{ opacity: 0, y: 50, rotateY: -20 }}
@@ -805,14 +807,14 @@ const Footer = () => {
                 transition={{ duration: 0.8, type: "spring" }}
                 style={{ transformStyle: 'preserve-3d' }}
               >
-                {/* Enhanced Logo with Theme Support */}
+                {/* Enhanced Logo with Vivid Purple Theme */}
                 <MagneticElement className="flex items-center space-x-4 mb-10" strength={0.2} theme={theme}>
                   <motion.div 
                     className="relative"
                     whileHover={{ scale: 1.1, rotateY: 180 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <div className="w-20 h-20 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl flex items-center justify-center shadow-2xl">
+                    <div className="w-20 h-20 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-3xl flex items-center justify-center shadow-2xl">
                       <motion.span 
                         className="text-white font-bold text-3xl"
                         animate={{ rotate: 360 }}
@@ -822,13 +824,13 @@ const Footer = () => {
                       </motion.span>
                     </div>
                     
-                    {/* Enhanced Orbital rings with theme support */}
+                    {/* Enhanced Orbital rings with vivid purple theme */}
                     <motion.div
                       className={cn(
                         "absolute -inset-2 border-2 rounded-3xl",
                         theme === 'dark' 
-                          ? "border-purple-400/30" 
-                          : "border-purple-400/20"
+                          ? "border-violet-400/30" 
+                          : "border-violet-400/20"
                       )}
                       animate={{ rotate: 360 }}
                       transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
@@ -837,8 +839,8 @@ const Footer = () => {
                       className={cn(
                         "absolute -inset-4 border rounded-3xl",
                         theme === 'dark' 
-                          ? "border-pink-400/20" 
-                          : "border-pink-400/15"
+                          ? "border-fuchsia-400/20" 
+                          : "border-fuchsia-400/15"
                       )}
                       animate={{ rotate: -360 }}
                       transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
@@ -851,8 +853,8 @@ const Footer = () => {
                     <span className={cn(
                       "text-4xl font-bold bg-gradient-to-r bg-clip-text text-transparent",
                       theme === 'dark' 
-                        ? "from-white via-purple-200 to-pink-200" 
-                        : "from-gray-900 via-purple-600 to-pink-600"
+                        ? "from-white via-violet-200 to-fuchsia-200" 
+                        : "from-black via-violet-600 to-fuchsia-600"
                     )}>
                       NeoApp
                     </span>
@@ -862,7 +864,7 @@ const Footer = () => {
                 <motion.p 
                   className={cn(
                     "mb-10 leading-relaxed text-xl",
-                    theme === 'dark' ? "text-gray-300" : "text-gray-600"
+                    theme === 'dark' ? "text-gray-100" : "text-slate-800"
                   )}
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
@@ -871,7 +873,7 @@ const Footer = () => {
                   Building the future of digital experiences. Join thousands of companies transforming their business with our revolutionary platform.
                 </motion.p>
 
-                {/* Enhanced Contact Info with Theme Support */}
+                {/* Enhanced Contact Info with Vivid Purple Theme */}
                 <div className="space-y-6">
                   {[
                     { icon: Mail, text: "hello@neoapp.com", href: "mailto:hello@neoapp.com" },
@@ -884,8 +886,8 @@ const Footer = () => {
                       className={cn(
                         "flex items-center space-x-4 transition-all duration-300 p-4 rounded-2xl group relative overflow-hidden",
                         theme === 'dark' 
-                          ? "text-gray-300 hover:text-purple-400 hover:bg-white/5" 
-                          : "text-gray-600 hover:text-purple-600 hover:bg-gray-100/50"
+                          ? "text-gray-200 hover:text-violet-400 hover:bg-white" 
+                          : "text-slate-800 hover:text-violet-600 hover:bg-gray-100"
                       )}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
@@ -896,11 +898,11 @@ const Footer = () => {
                         rotateY: 2,
                       }}
                     >
-                      {/* Holographic background */}
+                      {/* Holographic background with vivid purple */}
                       <motion.div
                         className={cn(
-                          "absolute inset-0 bg-gradient-to-r from-purple-600/5 via-pink-600/5 to-blue-600/5 opacity-0 group-hover:opacity-100",
-                          theme === 'light' && "from-purple-600/3 via-pink-600/3 to-blue-600/3"
+                          "absolute inset-0 bg-gradient-to-r from-violet-600/5 via-fuchsia-600/5 to-cyan-400/5 opacity-0 group-hover:opacity-100",
+                          theme === 'light' && "from-violet-600/3 via-fuchsia-600/3 to-cyan-400/3"
                         )}
                         transition={{ duration: 0.3 }}
                       />
@@ -909,8 +911,8 @@ const Footer = () => {
                         className={cn(
                           "p-3 rounded-xl bg-gradient-to-r",
                           theme === 'dark' 
-                            ? "from-purple-600/20 to-pink-600/20" 
-                            : "from-purple-100/80 to-pink-100/80"
+                            ? "from-violet-600/20 to-fuchsia-600/20" 
+                            : "from-violet-100/80 to-fuchsia-100/80"
                         )}
                         whileHover={{ 
                           rotate: 360,
@@ -922,14 +924,14 @@ const Footer = () => {
                       </motion.div>
                       <span className="font-semibold text-lg relative z-10">{contact.text}</span>
                       
-                      {/* Enhanced Hover particles */}
+                      {/* Enhanced Hover particles with vivid purple */}
                       <AnimatePresence>
                         {[...Array(4)].map((_, i) => (
                           <motion.div
                             key={i}
                             className={cn(
                               "absolute w-1 h-1 rounded-full opacity-0 group-hover:opacity-100",
-                              theme === 'dark' ? "bg-purple-400" : "bg-purple-600"
+                              theme === 'dark' ? "bg-violet-400" : "bg-violet-600"
                             )}
                             animate={{
                               x: [0, Math.random() * 60 - 30],
@@ -950,7 +952,7 @@ const Footer = () => {
               </motion.div>
             </div>
 
-            {/* Enhanced Footer Links Sections with Theme Support */}
+            {/* Enhanced Footer Links Sections with Vivid Purple Theme */}
             {footerSections.map((section, sectionIndex) => {
               const SectionIcon = section.icon;
               
@@ -967,7 +969,7 @@ const Footer = () => {
                     }}
                     style={{ transformStyle: 'preserve-3d' }}
                   >
-                    {/* Enhanced Section Header */}
+                    {/* Enhanced Section Header with vivid purple */}
                     <motion.div 
                       className="flex items-center space-x-4 mb-10"
                       whileHover={{ scale: 1.05, rotateY: 5 }}
@@ -976,20 +978,20 @@ const Footer = () => {
                         className={cn(
                           "p-3 rounded-xl bg-gradient-to-r",
                           theme === 'dark' 
-                            ? "from-purple-600/20 to-pink-600/20" 
-                            : "from-purple-100/80 to-pink-100/80"
+                            ? "from-violet-600/20 to-fuchsia-600/20" 
+                            : "from-violet-100/80 to-fuchsia-100/80"
                         )}
                         animate={{ rotate: 360 }}
                         transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
                       >
                         <SectionIcon className={cn(
                           "w-6 h-6",
-                          theme === 'dark' ? "text-purple-400" : "text-purple-600"
+                          theme === 'dark' ? "text-violet-400" : "text-violet-600"
                         )} />
                       </motion.div>
                       <h4 className={cn(
                         "text-2xl font-bold",
-                        theme === 'dark' ? "text-white" : "text-gray-900"
+                        theme === 'dark' ? "text-white" : "text-black"
                       )}>
                         {section.title}
                       </h4>
@@ -1015,7 +1017,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Enhanced Bottom Section with Theme Support */}
+        {/* Enhanced Bottom Section with Vivid Purple Theme */}
         <div className={cn(
           "border-t backdrop-blur-sm",
           theme === 'dark' 
@@ -1025,7 +1027,7 @@ const Footer = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="flex flex-col md:flex-row justify-between items-center gap-10">
               
-              {/* Enhanced Copyright with Theme Support */}
+              {/* Enhanced Copyright with Vivid Purple Theme */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1033,7 +1035,7 @@ const Footer = () => {
                 transition={{ duration: 0.6 }}
                 className={cn(
                   "flex items-center space-x-3 text-lg",
-                  theme === 'dark' ? "text-gray-300" : "text-gray-600"
+                  theme === 'dark' ? "text-gray-200" : "text-slate-800"
                 )}
               >
                 <span>© 2025 NeoApp. Made with</span>
@@ -1053,7 +1055,7 @@ const Footer = () => {
                 <span>in San Francisco</span>
               </motion.div>
 
-              {/* Enhanced Social Links with Theme Support */}
+              {/* Enhanced Social Links with Vivid Purple Theme */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1084,8 +1086,8 @@ const Footer = () => {
                           className={cn(
                             "relative block p-5 backdrop-blur-md rounded-3xl shadow-lg transition-all duration-300 overflow-hidden group",
                             theme === 'dark' 
-                              ? "bg-white/10 text-gray-300" 
-                              : "bg-white/60 text-gray-600"
+                              ? "bg-white/10 text-gray-200" 
+                              : "bg-white text-slate-800"
                           )}
                           whileHover={{ 
                             scale: 1.15, 
@@ -1098,7 +1100,7 @@ const Footer = () => {
                           whileTap={{ scale: 0.9 }}
                           aria-label={social.label}
                         >
-                          {/* Enhanced Animated background */}
+                          {/* Enhanced Animated background with vivid purple accents */}
                           <motion.div
                             className="absolute inset-0 opacity-0 group-hover:opacity-100"
                             style={{
@@ -1119,24 +1121,24 @@ const Footer = () => {
                             <Icon className="w-7 h-7" />
                           </motion.div>
                           
-                          {/* Enhanced Orbital ring */}
+                          {/* Enhanced Orbital ring with vivid purple */}
                           <motion.div
                             className={cn(
                               "absolute inset-0 border-2 rounded-3xl opacity-0 group-hover:opacity-100",
-                              theme === 'dark' ? "border-white/20" : "border-gray-400/30"
+                              theme === 'dark' ? "border-violet-400/30" : "border-violet-400/20"
                             )}
                             animate={{ rotate: 360 }}
                             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                           />
                           
-                          {/* Enhanced Hover particles */}
+                          {/* Enhanced Hover particles with vivid purple */}
                           <AnimatePresence>
                             {[...Array(6)].map((_, i) => (
                               <motion.div
                                 key={i}
                                 className={cn(
                                   "absolute w-1 h-1 rounded-full opacity-0 group-hover:opacity-100",
-                                  theme === 'dark' ? "bg-white" : "bg-gray-800"
+                                  theme === 'dark' ? "bg-violet-400" : "bg-violet-600"
                                 )}
                                 animate={{
                                   x: [0, Math.cos(i * Math.PI / 3) * 40],
@@ -1162,7 +1164,7 @@ const Footer = () => {
                 })}
               </motion.div>
 
-              {/* Enhanced Back to Top Button with Theme Support */}
+              {/* Enhanced Back to Top Button with Vivid Purple Theme */}
               <MagneticElement strength={0.5} theme={theme}>
                 <motion.button
                   initial={{ opacity: 0, y: 20 }}
@@ -1172,12 +1174,12 @@ const Footer = () => {
                   whileHover={{ 
                     scale: 1.15, 
                     y: -8,
-                    boxShadow: "0 30px 60px rgba(139, 92, 246, 0.4)",
+                    boxShadow: "0 30px 60px rgba(216, 109, 252, 0.4)",
                     rotateY: 15
                   }}
                   whileTap={{ scale: 0.85 }}
                   onClick={scrollToTop}
-                  className="relative p-5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl text-white shadow-2xl overflow-hidden group"
+                  className="relative p-5 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-3xl text-white shadow-2xl overflow-hidden group"
                   aria-label="Back to top"
                 >
                   {/* Enhanced Holographic overlay */}

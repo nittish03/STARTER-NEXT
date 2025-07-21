@@ -4,28 +4,97 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Updated custom shadow with vivid purple theme */
 .custom-shadow {
-    box-shadow: 0 0 15px white;
+    box-shadow: 0 0 15px #D86DFC;
+}
+
+.custom-shadow-light {
+    box-shadow: 0 0 15px rgba(216, 109, 252, 0.3);
+}
+
+.custom-shadow-dark {
+    box-shadow: 0 0 15px rgba(216, 109, 252, 0.6);
 }
 
 @layer base {
   :root {
-        --radius: 0.5rem;
-    }
+    --radius: 0.5rem;
+    
+    /* Vivid Purple Color Palette Variables */
+    --primary: #D86DFC; /* Vivid Purple */
+    
+    /* Light Mode Colors */
+    --light-secondary-1: #F4F5F7; /* Light Gray */
+    --light-secondary-2: #4A4A59; /* Slate Gray */
+    --light-accent-1: #6DE1FC; /* Cyan Blue */
+    --light-accent-2: #FCD68D; /* Soft Yellow */
+    --light-neutral-1: #FFFFFF; /* White */
+    --light-neutral-2: #2D2D2D; /* Slate Gray */
+    
+    /* Dark Mode Colors */
+    --dark-secondary-1: #0A1325; /* Dark Navy Blue */
+    --dark-secondary-2: #2D2D2D; /* Charcoal */
+    --dark-accent-1: #4A4A59; /* Slate Gray */
+    --dark-accent-2: #FCD68D; /* Slate Gray for accents */
+    --dark-neutral-1: #4A4A59; /* Slate Gray */
+    --dark-neutral-2: #F4F5F7; /* Light Gray */
+  }
+  
+  /* Light mode default */
+  html {
+    color-scheme: light;
+    --background: var(--light-neutral-1);
+    --foreground: #000000;
+    --card: var(--light-neutral-1);
+    --card-foreground: #000000;
+    --popover: var(--light-neutral-1);
+    --popover-foreground: #000000;
+    --muted: var(--light-secondary-1);
+    --muted-foreground: var(--light-secondary-2);
+    --accent: var(--light-accent-1);
+    --accent-foreground: #000000;
+    --border: rgba(74, 74, 89, 0.2);
+    --input: rgba(74, 74, 89, 0.2);
+    --ring: var(--primary);
+  }
+  
+  /* Dark mode */
+  html.dark {
+    color-scheme: dark;
+    --background: var(--dark-secondary-1);
+    --foreground: #FFFFFF;
+    --card: var(--dark-secondary-2);
+    --card-foreground: #FFFFFF;
+    --popover: var(--dark-secondary-2);
+    --popover-foreground: #FFFFFF;
+    --muted: var(--dark-neutral-1);
+    --muted-foreground: var(--dark-neutral-2);
+    --accent: var(--dark-accent-1);
+    --accent-foreground: #FFFFFF;
+    --border: rgba(74, 74, 89, 0.3);
+    --input: rgba(74, 74, 89, 0.3);
+    --ring: var(--primary);
+  }
 }
 
+/* Enhanced blob animation with vivid purple glow */
 @keyframes blob {
   0% {
     transform: translate(0px, 0px) scale(1);
+    filter: drop-shadow(0 0 20px rgba(216, 109, 252, 0.3));
   }
   33% {
     transform: translate(30px, -50px) scale(1.1);
+    filter: drop-shadow(0 0 30px rgba(216, 109, 252, 0.4));
   }
   66% {
     transform: translate(-20px, 20px) scale(0.9);
+    filter: drop-shadow(0 0 25px rgba(216, 109, 252, 0.2));
   }
   100% {
     transform: translate(0px, 0px) scale(1);
+    filter: drop-shadow(0 0 20px rgba(216, 109, 252, 0.3));
   }
 }
 
@@ -41,6 +110,36 @@
   animation-delay: 4s;
 }
 
+/* Enhanced glow effects with vivid purple */
+@keyframes vivid-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(216, 109, 252, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(216, 109, 252, 0.8);
+  }
+}
+
+.animate-vivid-glow {
+  animation: vivid-glow 2s ease-in-out infinite;
+}
+
+/* Pulse animation for accent elements */
+@keyframes accent-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+.animate-accent-pulse {
+  animation: accent-pulse 2s ease-in-out infinite;
+}
+
 /* Prevent flash of wrong theme */
 html {
   color-scheme: light;
@@ -49,7 +148,6 @@ html {
 html[class~="dark"] {
   color-scheme: dark;
 }
-/* Add to your existing globals.css */
 
 /* Prevent flash of unstyled content during hydration */
 html {
@@ -60,11 +158,11 @@ html.dark {
   color-scheme: dark;
 }
 
-/* Improve hydration performance */
+/* Enhanced transitions with vivid purple theme */
 * {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, box-shadow, transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+  transition-duration: 200ms;
 }
 
 /* Prevent layout shift during hydration */
@@ -72,12 +170,33 @@ html.dark {
   min-height: 1px;
 }
 
-/* Loading states */
+/* Updated loading states with theme colors */
 .loading-skeleton {
-  @apply bg-gray-200 dark:bg-gray-700 animate-pulse;
+  @apply animate-pulse;
 }
 
-/* Add to your globals.css */
+.loading-skeleton-light {
+  background: linear-gradient(90deg, #F4F5F7 25%, rgba(216, 109, 252, 0.1) 50%, #F4F5F7 75%);
+  background-size: 200% 100%;
+  animation: loading-shimmer 1.5s infinite;
+}
+
+.loading-skeleton-dark {
+  background: linear-gradient(90deg, #4A4A59 25%, rgba(216, 109, 252, 0.2) 50%, #4A4A59 75%);
+  background-size: 200% 100%;
+  animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Enhanced 3D utilities */
 .perspective-1000 {
   perspective: 1000px;
 }
@@ -88,4 +207,154 @@ html.dark {
 
 .transform-style-3d {
   transform-style: preserve-3d;
+}
+
+/* Vivid purple gradient utilities */
+.gradient-vivid-primary {
+  background: linear-gradient(135deg, #D86DFC, #6DE1FC);
+}
+
+.gradient-vivid-secondary {
+  background: linear-gradient(135deg, #6DE1FC, #FCD68D);
+}
+
+.gradient-vivid-accent {
+  background: linear-gradient(135deg, #FCD68D, #D86DFC);
+}
+
+/* Theme-aware text gradients */
+.text-gradient-vivid {
+  background: linear-gradient(135deg, #D86DFC, #6DE1FC);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Enhanced button hover effects */
+.button-vivid-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-vivid-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(216, 109, 252, 0.4), transparent);
+  transition: left 0.5s ease-in-out;
+}
+
+.button-vivid-hover:hover::before {
+  left: 100%;
+}
+
+/* Glassmorphism effects with vivid purple */
+.glass-vivid {
+  background: rgba(216, 109, 252, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(216, 109, 252, 0.2);
+}
+
+.glass-vivid-dark {
+  background: rgba(216, 109, 252, 0.05);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(216, 109, 252, 0.15);
+}
+
+/* Card hover effects */
+.card-vivid-hover {
+  transition: all 0.3s ease;
+}
+
+.card-vivid-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(216, 109, 252, 0.2);
+}
+
+/* Scrollbar styling with vivid purple theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #D86DFC, #6DE1FC);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #6DE1FC, #D86DFC);
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(216, 109, 252, 0.3);
+  color: inherit;
+}
+
+::-moz-selection {
+  background: rgba(216, 109, 252, 0.3);
+  color: inherit;
+}
+
+/* Focus states with vivid purple */
+.focus-vivid:focus {
+  outline: none;
+  ring: 2px solid #D86DFC;
+  ring-offset: 2px;
+}
+
+/* Enhanced backdrop blur utilities */
+.backdrop-vivid {
+  backdrop-filter: blur(12px) saturate(180%);
+}
+
+.backdrop-vivid-strong {
+  backdrop-filter: blur(20px) saturate(200%);
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  .animate-blob {
+    animation-duration: 10s; /* Slower on mobile for better performance */
+  }
+  
+  .backdrop-vivid,
+  .backdrop-vivid-strong {
+    backdrop-filter: blur(8px); /* Reduced blur on mobile */
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .custom-shadow {
+    box-shadow: 0 0 10px #000;
+  }
+  
+  .text-gradient-vivid {
+    background: none;
+    -webkit-text-fill-color: initial;
+    color: #D86DFC;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-blob,
+  .animate-vivid-glow,
+  .animate-accent-pulse {
+    animation: none;
+  }
+  
+  * {
+    transition-duration: 0ms;
+  }
 }

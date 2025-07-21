@@ -61,8 +61,8 @@ const FloatingParticles = ({ theme, isMobile }: { theme: string, isMobile: boole
     <instancedMesh ref={meshRef} args={[undefined, undefined, particleCount]}>
       <sphereGeometry args={[0.1]} />
       <meshStandardMaterial 
-        color="#8b5cf6" 
-        emissive="#8b5cf6" 
+        color="#D86DFC" 
+        emissive="#D86DFC" 
         emissiveIntensity={theme === 'dark' ? 0.5 : 0.3}
         transparent
         opacity={theme === 'dark' ? 0.8 : 0.6}
@@ -90,8 +90,8 @@ const Logo3D = ({ isHovered, theme }: { isHovered: boolean, theme: string }) => 
         scale={isHovered ? 1.2 : 1}
       >
         <meshStandardMaterial 
-          color="#8b5cf6" 
-          emissive="#8b5cf6" 
+          color="#D86DFC" 
+          emissive="#D86DFC" 
           emissiveIntensity={theme === 'dark' ? 0.3 : 0.2}
           roughness={0.1}
           metalness={0.8}
@@ -102,11 +102,11 @@ const Logo3D = ({ isHovered, theme }: { isHovered: boolean, theme: string }) => 
       <Text
         position={[0, 0, 1.2]}
         fontSize={0.5}
-        color={theme === 'dark' ? "#ffffff" : "#111827"}
+        color={theme === 'dark' ? "#ffffff" : "#000000"}
         anchorX="center"
         anchorY="middle"
         outlineWidth={0.02}
-        outlineColor={theme === 'dark' ? "#8b5cf6" : "#7c3aed"}
+        outlineColor={theme === 'dark' ? "#D86DFC" : "#D86DFC"}
       >
         N
       </Text>
@@ -155,18 +155,18 @@ const HolographicButton = ({
         className={cn(
           "relative flex items-center justify-center sm:justify-start space-x-2 w-full sm:w-auto px-4 sm:px-6 py-3 sm:py-3 rounded-lg sm:rounded-xl text-sm sm:text-sm font-medium transition-all duration-300 overflow-hidden",
           "backdrop-blur-sm border",
-          theme === 'dark' ? "border-white/20" : "border-gray-300/30",
+          theme === 'dark' ? "border-gray-400/20" : "border-gray-300/30",
           isActive
-            ? "bg-gradient-to-r from-purple-600/80 to-pink-600/80 text-white shadow-2xl"
+            ? "bg-gradient-to-r from-violet-600/80 to-fuchsia-600/80 text-white shadow-2xl"
             : theme === 'dark'
-              ? "bg-white/10 text-gray-300 hover:bg-white/20"
-              : "bg-black/5 text-gray-700 hover:bg-black/10"
+              ? "bg-slate-800/80 text-gray-300 hover:bg-slate-700/80"
+              : "bg-gray-100/80 text-slate-700 hover:bg-gray-200/80"
         )}
         style={{
           boxShadow: isHovered 
             ? theme === 'dark'
-              ? '0 0 30px rgba(139, 92, 246, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.1)'
-              : '0 0 25px rgba(139, 92, 246, 0.4), inset 0 0 15px rgba(0, 0, 0, 0.05)'
+              ? '0 0 30px rgba(216, 109, 252, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.1)'
+              : '0 0 25px rgba(216, 109, 252, 0.4), inset 0 0 15px rgba(0, 0, 0, 0.05)'
             : theme === 'dark'
               ? '0 4px 15px rgba(0, 0, 0, 0.1)'
               : '0 4px 15px rgba(0, 0, 0, 0.05)',
@@ -174,7 +174,7 @@ const HolographicButton = ({
       >
         {/* Animated background */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0"
+          className="absolute inset-0 bg-gradient-to-r from-violet-600 to-fuchsia-600 opacity-0"
           animate={{
             opacity: isHovered ? 0.8 : 0,
           }}
@@ -224,7 +224,7 @@ const HolographicButton = ({
                   key={i}
                   className={cn(
                     "absolute w-1 h-1 rounded-full",
-                    theme === 'dark' ? "bg-white" : "bg-purple-600"
+                    theme === 'dark' ? "bg-white" : "bg-violet-600"
                   )}
                   initial={{
                     x: '50%',
@@ -334,13 +334,13 @@ const Navbar = () => {
       <nav className={cn(
         "backdrop-blur-md border-b fixed w-full z-50 top-0 transition-colors duration-500",
         theme === 'dark' 
-          ? "bg-gray-900/80 border-gray-700" 
+          ? "bg-slate-900/80 border-slate-700" 
           : "bg-white/80 border-gray-200"
       )}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
           <div className={cn(
             "w-24 sm:w-32 h-6 sm:h-8 rounded animate-pulse",
-            theme === 'dark' ? "bg-gray-700" : "bg-gray-200"
+            theme === 'dark' ? "bg-slate-700" : "bg-gray-200"
           )}></div>
           <div className="hidden md:flex space-x-4 lg:space-x-8">
             {[1,2,3,4,5].map(i => (
@@ -348,7 +348,7 @@ const Navbar = () => {
                 key={i} 
                 className={cn(
                   "w-12 lg:w-16 h-4 rounded animate-pulse",
-                  theme === 'dark' ? "bg-gray-700" : "bg-gray-200"
+                  theme === 'dark' ? "bg-slate-700" : "bg-gray-200"
                 )}
               ></div>
             ))}
@@ -359,7 +359,7 @@ const Navbar = () => {
                 key={i}
                 className={cn(
                   "w-8 h-8 sm:w-10 sm:h-10 rounded animate-pulse",
-                  theme === 'dark' ? "bg-gray-700" : "bg-gray-200"
+                  theme === 'dark' ? "bg-slate-700" : "bg-gray-200"
                 )}
               ></div>
             ))}
@@ -384,10 +384,10 @@ const Navbar = () => {
         "fixed w-full z-50 top-0 transition-all duration-500 transform-gpu",
         isScrolled 
           ? theme === 'dark'
-            ? "bg-gray-900/30 backdrop-blur-2xl border-b border-gray-700/30 shadow-2xl" 
+            ? "bg-slate-900/30 backdrop-blur-2xl border-b border-slate-700/30 shadow-2xl" 
             : "bg-white/40 backdrop-blur-2xl border-b border-gray-300/30 shadow-2xl"
           : theme === 'dark'
-            ? "bg-gray-900/20 backdrop-blur-xl border-b border-gray-700/20"
+            ? "bg-slate-900/20 backdrop-blur-xl border-b border-slate-700/20"
             : "bg-white/30 backdrop-blur-xl border-b border-gray-300/20"
       )}
     >
@@ -410,9 +410,9 @@ const Navbar = () => {
         )}
         animate={{
           background: [
-            'linear-gradient(45deg, #8b5cf6, #ec4899)',
-            'linear-gradient(90deg, #ec4899, #06b6d4)',
-            'linear-gradient(135deg, #06b6d4, #8b5cf6)',
+            'linear-gradient(45deg, #D86DFC, #FCD68D)',
+            'linear-gradient(90deg, #FCD68D, #6DE1FC)',
+            'linear-gradient(135deg, #6DE1FC, #D86DFC)',
           ]
         }}
         transition={{
@@ -449,7 +449,7 @@ const Navbar = () => {
                 ) : (
                   // Fallback 2D logo for mobile
                   <div className={cn(
-                    "w-8 h-8 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center font-bold text-white text-sm sm:text-xl bg-gradient-to-r from-purple-600 to-pink-600",
+                    "w-8 h-8 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center font-bold text-white text-sm sm:text-xl bg-gradient-to-r from-violet-600 to-fuchsia-600",
                     logoHovered && "shadow-lg"
                   )}>
                     N
@@ -460,7 +460,7 @@ const Navbar = () => {
                 <motion.div
                   className={cn(
                     "absolute inset-0 rounded-full border-2",
-                    theme === 'dark' ? "border-purple-500/50" : "border-purple-600/60"
+                    theme === 'dark' ? "border-violet-500/50" : "border-violet-600/60"
                   )}
                   animate={{
                     rotate: 360,
@@ -481,7 +481,7 @@ const Navbar = () => {
                           key={i}
                           className={cn(
                             "absolute w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full",
-                            theme === 'dark' ? "bg-purple-400" : "bg-purple-600"
+                            theme === 'dark' ? "bg-violet-400" : "bg-violet-600"
                           )}
                           initial={{
                             x: '50%',
@@ -507,12 +507,12 @@ const Navbar = () => {
               <motion.div
                 animate={{
                   color: logoHovered 
-                    ? '#8b5cf6' 
-                    : theme === 'dark' ? '#ffffff' : '#111827',
+                    ? '#D86DFC' 
+                    : theme === 'dark' ? '#ffffff' : '#000000',
                   textShadow: logoHovered 
                     ? theme === 'dark'
-                      ? '0 0 20px rgba(139, 92, 246, 0.5)' 
-                      : '0 0 15px rgba(139, 92, 246, 0.4)'
+                      ? '0 0 20px rgba(216, 109, 252, 0.5)' 
+                      : '0 0 15px rgba(216, 109, 252, 0.4)'
                     : '0 0 0px transparent',
                 }}
                 className="hidden sm:block"
@@ -561,15 +561,15 @@ const Navbar = () => {
                 scale: 1.1,
                 rotateY: 180,
                 boxShadow: theme === 'dark'
-                  ? '0 0 25px rgba(139, 92, 246, 0.6)'
-                  : '0 0 20px rgba(139, 92, 246, 0.4)'
+                  ? '0 0 25px rgba(216, 109, 252, 0.6)'
+                  : '0 0 20px rgba(216, 109, 252, 0.4)'
               } : { scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className={cn(
-                "relative p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-purple-600/20 to-pink-600/20 backdrop-blur-sm border transition-all duration-300",
+                "relative p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 backdrop-blur-sm border transition-all duration-300",
                 theme === 'dark' 
-                  ? "border-white/20 text-gray-300 hover:text-purple-400" 
-                  : "border-gray-300/30 text-gray-700 hover:text-purple-600"
+                  ? "border-slate-700/20 text-gray-300 hover:text-violet-400" 
+                  : "border-gray-300/30 text-slate-700 hover:text-violet-600"
               )}
             >
               <Search className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -577,7 +577,7 @@ const Navbar = () => {
                 <motion.div
                   className={cn(
                     "absolute inset-0 rounded-lg sm:rounded-xl",
-                    theme === 'dark' ? "bg-purple-500/20" : "bg-purple-500/15"
+                    theme === 'dark' ? "bg-violet-500/20" : "bg-violet-500/15"
                   )}
                   initial={{ scale: 0, opacity: 0 }}
                   whileHover={{ scale: 1, opacity: 1 }}
@@ -592,16 +592,16 @@ const Navbar = () => {
                 scale: 1.1,
                 rotateY: 360,
                 boxShadow: theme === 'dark'
-                  ? '0 0 30px rgba(139, 92, 246, 0.8)'
-                  : '0 0 25px rgba(139, 92, 246, 0.5)'
+                  ? '0 0 30px rgba(252, 214, 141, 0.8)'
+                  : '0 0 25px rgba(252, 214, 141, 0.5)'
               } : { scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={toggleTheme}
               className={cn(
                 "relative p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-yellow-500/20 to-blue-500/20 backdrop-blur-sm border transition-all duration-300 overflow-hidden",
                 theme === 'dark' 
-                  ? "border-white/20 text-gray-300 hover:text-purple-400" 
-                  : "border-gray-300/30 text-gray-700 hover:text-purple-600"
+                  ? "border-slate-700/20 text-gray-300 hover:text-yellow-400" 
+                  : "border-gray-300/30 text-slate-700 hover:text-yellow-600"
               )}
               aria-label="Toggle theme"
             >
@@ -650,15 +650,15 @@ const Navbar = () => {
                 scale: 1.1,
                 rotateZ: 15,
                 boxShadow: theme === 'dark'
-                  ? '0 0 25px rgba(139, 92, 246, 0.6)'
-                  : '0 0 20px rgba(139, 92, 246, 0.4)'
+                  ? '0 0 25px rgba(216, 109, 252, 0.6)'
+                  : '0 0 20px rgba(216, 109, 252, 0.4)'
               } : { scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className={cn(
                 "relative p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-red-500/20 to-orange-500/20 backdrop-blur-sm border transition-all duration-300 hidden xs:block",
                 theme === 'dark' 
-                  ? "border-white/20 text-gray-300 hover:text-purple-400" 
-                  : "border-gray-300/30 text-gray-700 hover:text-purple-600"
+                  ? "border-slate-700/20 text-gray-300 hover:text-violet-400" 
+                  : "border-gray-300/30 text-slate-700 hover:text-violet-600"
               )}
             >
               <Bell className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -682,16 +682,16 @@ const Navbar = () => {
                 whileHover={!isMobile ? { 
                   scale: 1.1,
                   boxShadow: theme === 'dark'
-                    ? '0 0 25px rgba(139, 92, 246, 0.6)'
-                    : '0 0 20px rgba(139, 92, 246, 0.4)'
+                    ? '0 0 25px rgba(216, 109, 252, 0.6)'
+                    : '0 0 20px rgba(216, 109, 252, 0.4)'
                 } : { scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 className={cn(
-                  "flex items-center space-x-1 sm:space-x-2 p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-purple-600/20 to-pink-600/20 backdrop-blur-sm border transition-all duration-300",
+                  "flex items-center space-x-1 sm:space-x-2 p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 backdrop-blur-sm border transition-all duration-300",
                   theme === 'dark' 
-                    ? "border-white/20 text-gray-300 hover:text-purple-400" 
-                    : "border-gray-300/30 text-gray-700 hover:text-purple-600"
+                    ? "border-slate-700/20 text-gray-300 hover:text-violet-400" 
+                    : "border-gray-300/30 text-slate-700 hover:text-violet-600"
                 )}
               >
                 <motion.div
@@ -738,14 +738,14 @@ const Navbar = () => {
                     className={cn(
                       "absolute right-0 mt-2 sm:mt-3 w-48 sm:w-56 backdrop-blur-xl rounded-xl sm:rounded-2xl shadow-2xl border overflow-hidden",
                       theme === 'dark' 
-                        ? "bg-gray-800/90 border-gray-700/30" 
+                        ? "bg-slate-800/90 border-slate-700/30" 
                         : "bg-white/90 border-gray-300/30"
                     )}
                     style={{
                       transformStyle: 'preserve-3d',
                       boxShadow: theme === 'dark'
-                        ? '0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(139, 92, 246, 0.2)'
-                        : '0 20px 40px rgba(0, 0, 0, 0.15), 0 0 30px rgba(139, 92, 246, 0.1)'
+                        ? '0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(216, 109, 252, 0.2)'
+                        : '0 20px 40px rgba(0, 0, 0, 0.15), 0 0 30px rgba(216, 109, 252, 0.1)'
                     }}
                   >
                     <div className="py-1 sm:py-2">
@@ -761,13 +761,13 @@ const Navbar = () => {
                             className={cn(
                               "block px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm transition-all duration-200 relative overflow-hidden group",
                               theme === 'dark' 
-                                ? "text-gray-300 hover:bg-purple-900/20 hover:text-purple-400" 
-                                : "text-gray-700 hover:bg-purple-50/80 hover:text-purple-600"
+                                ? "text-gray-300 hover:bg-violet-900/20 hover:text-violet-400" 
+                                : "text-slate-700 hover:bg-violet-50/80 hover:text-violet-600"
                             )}
                             onClick={closeMenu}
                           >
                             <motion.div
-                              className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-pink-600/10"
+                              className="absolute inset-0 bg-gradient-to-r from-violet-600/10 to-fuchsia-600/10"
                               initial={{ x: '-100%' }}
                               whileHover={{ x: '100%' }}
                               transition={{ duration: 0.5 }}
@@ -778,7 +778,7 @@ const Navbar = () => {
                       ))}
                       <hr className={cn(
                         "my-1 sm:my-2",
-                        theme === 'dark' ? "border-gray-700/50" : "border-gray-200/50"
+                        theme === 'dark' ? "border-slate-700/50" : "border-gray-200/50"
                       )} />
                       <motion.button 
                         className={cn(
@@ -809,16 +809,16 @@ const Navbar = () => {
               whileHover={!isMobile ? { 
                 scale: 1.1,
                 boxShadow: theme === 'dark'
-                  ? '0 0 25px rgba(139, 92, 246, 0.6)'
-                  : '0 0 20px rgba(139, 92, 246, 0.4)'
+                  ? '0 0 25px rgba(216, 109, 252, 0.6)'
+                  : '0 0 20px rgba(216, 109, 252, 0.4)'
               } : { scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={cn(
-                "lg:hidden p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-purple-600/20 to-pink-600/20 backdrop-blur-sm border transition-all duration-300",
+                "lg:hidden p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 backdrop-blur-sm border transition-all duration-300",
                 theme === 'dark' 
-                  ? "border-white/20 text-gray-300 hover:text-purple-400" 
-                  : "border-gray-300/30 text-gray-700 hover:text-purple-600"
+                  ? "border-slate-700/20 text-gray-300 hover:text-violet-400" 
+                  : "border-gray-300/30 text-slate-700 hover:text-violet-600"
               )}
             >
               <AnimatePresence mode="wait" initial={false}>
@@ -863,7 +863,7 @@ const Navbar = () => {
               className={cn(
                 "lg:hidden border-t backdrop-blur-xl mt-2 rounded-b-xl sm:rounded-b-2xl overflow-hidden",
                 theme === 'dark' 
-                  ? "border-gray-700/20 bg-gray-900/90" 
+                  ? "border-slate-700/20 bg-slate-900/90" 
                   : "border-gray-300/30 bg-white/90"
               )}
               style={{ 
@@ -901,16 +901,16 @@ const Navbar = () => {
                           "flex items-center space-x-3 sm:space-x-4 px-3 sm:px-4 py-3 sm:py-3 rounded-lg sm:rounded-xl text-sm sm:text-base font-medium transition-all duration-300 relative overflow-hidden group",
                           isActive(item.href)
                             ? theme === 'dark'
-                              ? "text-purple-400 bg-purple-900/20"
-                              : "text-purple-600 bg-purple-50/80"
+                              ? "text-violet-400 bg-violet-900/20"
+                              : "text-violet-600 bg-violet-50/80"
                             : theme === 'dark'
-                              ? "text-gray-300 hover:text-purple-400 hover:bg-purple-900/10"
-                              : "text-gray-700 hover:text-purple-600 hover:bg-purple-50/50"
+                              ? "text-gray-300 hover:text-violet-400 hover:bg-violet-900/10"
+                              : "text-slate-700 hover:text-violet-600 hover:bg-violet-50/50"
                         )}
                         onClick={closeMenu}
                       >
                         <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-pink-600/10"
+                          className="absolute inset-0 bg-gradient-to-r from-violet-600/10 to-fuchsia-600/10"
                           initial={{ x: '-100%' }}
                           whileHover={{ x: '100%' }}
                           transition={{ duration: 0.6 }}
@@ -933,7 +933,7 @@ const Navbar = () => {
                         
                         {isActive(item.href) && (
                           <motion.div
-                            className="absolute right-3 sm:right-4 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-purple-500 rounded-full"
+                            className="absolute right-3 sm:right-4 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-violet-500 rounded-full"
                             animate={{
                               scale: [1, 1.5, 1],
                               opacity: [1, 0.5, 1]
@@ -951,7 +951,7 @@ const Navbar = () => {
                 })}
                 
                 {/* Mobile-only User Menu */}
-                <div className="block md:hidden pt-2 sm:pt-4 border-t border-gray-200/50 dark:border-gray-700/50">
+                <div className="block md:hidden pt-2 sm:pt-4 border-t border-gray-200/50 dark:border-slate-700/50">
                   <div className="space-y-1">
                     {['Profile', 'Settings', 'Billing'].map((item, index) => (
                       <motion.div
@@ -965,8 +965,8 @@ const Navbar = () => {
                           className={cn(
                             "flex items-center space-x-3 px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-sm font-medium transition-all duration-300",
                             theme === 'dark'
-                              ? "text-gray-400 hover:text-gray-300 hover:bg-gray-800/50"
-                              : "text-gray-600 hover:text-gray-700 hover:bg-gray-100/50"
+                              ? "text-gray-400 hover:text-gray-300 hover:bg-slate-800/50"
+                              : "text-gray-600 hover:text-slate-700 hover:bg-gray-100/50"
                           )}
                           onClick={closeMenu}
                         >
