@@ -1,6 +1,6 @@
 'use client';
 
-import { ThemeProvider as NextThemesProvider } from 'next-themes';
+import { ThemeProvider as NextThemesProvider, useTheme } from 'next-themes';
 import { type ComponentProps, useEffect, useState } from 'react';
 
 interface ExtendedThemeProviderProps extends ComponentProps<typeof NextThemesProvider> {
@@ -56,7 +56,7 @@ export function ThemeProvider({
 
 // Optional: Export a hook for accessing theme with color palette context
 export function useVividTheme() {
-  const { theme, setTheme, resolvedTheme } = require('next-themes').useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   
   const colorPalette = {
     light: {
